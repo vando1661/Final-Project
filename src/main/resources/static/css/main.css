@@ -1,0 +1,105 @@
+.dropdown-menu {
+    background-color: cadetblue;
+    text-align: center;
+}
+
+.container-fluid {
+    background-color: cadetblue;
+    padding: 12px;
+
+}
+
+.navbar-brand {
+    padding-left: 16px;
+    color: #54456b;
+    font-family: "Goudy Stout", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+
+}
+.nav-item{
+    font-family: "Gill Sans Ultra Bold", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: right;
+    margin: 8px;
+}
+#navbarNavDropdown {
+    text-align: right;
+}
+
+#reg-submit {
+    margin-top: 22px;
+    font-family: "Gill Sans Ultra Bold", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+.form-group.col-md-12 {
+    font-family: "Gill Sans Ultra Bold", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #f7af1a;
+}
+.form-group.col-md-10{
+    font-family: "Gill Sans Ultra Bold", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: #f7af1a;
+
+    margin-top: 6px;
+}
+.form-group {
+    color: cadetblue;
+}
+.h1-form{
+    font-family: "Goudy Stout", sans-serif;
+    color: #54456b;
+    background-size: 18px;
+    text-align: center;
+    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+    padding-top: 24px;
+}
+.h3-form {
+    font-family: "Gill Sans Ultra Bold", sans-serif;
+    font-weight: bold;
+    color: #f7af1a;
+    background-color: cadetblue;
+}
+.h1-title {
+    font-family: "Goudy Stout", sans-serif;
+    color: #54456b;
+    background-size: 18px;
+    text-align: center;
+    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    /*background-image: url('/static/pic/bk.jpg');*/
+    /*no-repeat center center fixed;*/
+    /*background-size: cover;*/
+    /*style: "background-image: url('/static/pic/bk.jpg')"*/
+}
+
+.navbar.navbar-expand-md{
+    text-align: right;
+}
+#index_title {
+    font-family: "Arial Black", sans-serif;
+    margin-top: 140px;
+}
+.container-header {
+    position: static;
+}
+#footer-navbar {
+    margin-top: auto;
+}
+.form-check-label {
+
+}
