@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body style="background-image: url('/pic/bk.jpg');">
+<header th:replace="fragments/header"></header>
+<main><div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+    <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div><script>(function () {
+    var setting = {"query":"ul. \"Nish\", Ruse, Bulgaria","width":300,"height":200,"satellite":false,"zoom":14,"placeId":"Ejh1bC4gIk5pc2giLCA3MDAyIFBhcmsgTmEgVmF6cm96aGRlbnRzaXRlLCBSdXNlLCBCdWxnYXJpYSIuKiwKFAoSCd1EWMDJYK5AEVlqi7i0HdQEEhQKEgmFo-J_tGCuQBECaCgWUtsnvg","cid":"0x4d41db4b88b6a59","coords":[43.8508897,25.9630904],"lang":"en","queryString":"ul. \"Nish\", Ruse, Bulgaria","centerCoord":[43.8508897,25.9630904],"id":"map-9cd199b9cc5410cd3b1ad21cab2e54d3","embed_id":"1026417"};
+    var d = document;
+    var s = d.createElement('script');
+    s.src = 'https://1map.com/js/script-for-user.js?embed_id=1026417';
+    s.async = true;
+    s.onload = function (e) {
+        window.OneMap.initMap(setting)
+    };
+    var to = d.getElementsByTagName('script')[0];
+    to.parentNode.insertBefore(s, to);
+})();</script><a href="https://1map.com/map-embed">1 Map</a></div></main>
+<footer th:replace="fragments/footer"></footer>
+</body>
+</html>
