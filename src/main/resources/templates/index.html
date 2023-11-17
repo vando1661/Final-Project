@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body style="background-image: url('/pic/bk.jpg');">
+<header th:replace="fragments/header"></header>
+<main>
+
+    <div class="container-header mx-auto w-50 bg-blur text-center py-5" id="index_title">
+        <p class="h2 text-warning p-2">Welcome to</p>
+        <h1 class="h1-title"> GYM CENTER</h1>
+        <p class="h4 text-black">On the website you will find the perfect base for sports.</p>
+        <h4 class="h1-title">Mens sana in corpore sano.</h4>
+        <h3 class="text-black">
+            <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/login">Login</a>
+            if you have an account or
+            <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/register">Register</a>
+            now and check our deals.
+        </h3>
+    </div>
+
+</main>
+<footer th:replace="fragments/footer"></footer>
+</body>
+</html>
