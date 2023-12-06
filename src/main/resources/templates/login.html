@@ -6,6 +6,7 @@
 <body style="background-image: url('/pic/bk.jpg');">
 <header th:replace="fragments/header"></header>
 <main>
+    <th:block th:if="${@currentUser.id == null}">
     <div class="jumbotron">
     <div class="container text-light ">
         <div class="h1-form">
@@ -18,7 +19,7 @@
         <form th:action="@{/users/login}" th:method="POST" th:object="${userLoginBindingModel}">
             <h3 th:if="${isFound == false}" class="mt-5 text-center">
                 <strong class="h3-form rounded">
-                    Wrong username and password combination.
+                    Wrong username or password.
                 </strong>
             </h3>
         <div class="form-group col-md-12 pt-5">
@@ -29,13 +30,15 @@
         </div>
         <div class="form-group col-md-12">
             <label for="password">Password</label>
-            <input th:field="*{password}" th:errorclass="is-invalid" type="text" class="form-control"
+            <input th:field="*{password}" th:errorclass="is-invalid" type="password"
+
+                   class="form-control"
                    id="password"
                    aria-describedby="passwordHelpInline" placeholder="Password">
         </div>
         <div class="form-group form-check col-md-10">
-            <input type="checkbox" class="form-check-input " id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <input type="checkbox" class="form-check-input " id="remember" name="remember">
+            <label class="form-check-label" for="remember">Remember me</label>
         </div>
 
         <div>
@@ -44,6 +47,10 @@
 </form>
     </div>
 </div>
+    </th:block>
+    <th:block th:unless="${@currentUser.id == null}">
+        <div class="notification-class"><h1>Hello, you are already logged in.</h1></div>
+    </th:block>
 </main>
 <footer th:replace="fragments/footer"></footer>
 </body>
