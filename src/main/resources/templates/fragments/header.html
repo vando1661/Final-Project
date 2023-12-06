@@ -9,9 +9,12 @@
     <nav class="navbar navbar-expand-lg mx-2">
         <div class="container-fluid rounded">
             <a><img src="/pic/logo.png" th:alt="logo"></a>
-            <a class="navbar-brand" href="/">Gym Center</a>
+            <a class="navbar-brand" th:href="@{/}">Gym Center</a>
+            <th:block th:unless="${@currentUser.id == null}">
+                <h5 class="welcome-h4 pt-2" style="color:wheat">Welcome, <span th:text="${@currentUser.username}"></span> !</h5>
+            </th:block>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="color: #f7af1a">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
@@ -22,15 +25,16 @@
                             Menu
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item text-warning" href="#">Gym</a></li>
-                            <li><a class="dropdown-item text-warning" href="#">Tennis</a></li>
-                            <li><a class="dropdown-item text-warning" href="#">Gymnastics</a></li>
-                            <li><a class="dropdown-item text-warning" href="#">Swimming</a></li>
-                            <li><a class="dropdown-item text-warning" href="healthy-food.html">Healthy food</a></li>
+                            <li><a class="dropdown-item text-warning" href="/fitness">Fitness</a></li>
+                            <li><a class="dropdown-item text-warning" href="/tennis">Tennis</a></li>
+                            <li><a class="dropdown-item text-warning" href="/gymnastics">Gymnastics</a></li>
+                            <li><a class="dropdown-item text-warning" href="/swimming">Swimming</a></li>
+                            <li><a class="dropdown-item text-warning" href="/kids-zone">Kids Zone</a></li>
+                            <li><a class="dropdown-item text-warning" href="/healthy-food">Healthy food</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-warning" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active text-warning" aria-current="page" th:href="@{/}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-warning" th:href="@{/about}">About</a>
@@ -51,6 +55,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-warning" th:href="@{/users/logout}">Logout</a>
                         </li>
+
                     </th:block>
 
                 </ul>
