@@ -1,6 +1,6 @@
 package com.example.finalproject.service.impl;
 
-import com.example.finalproject.model.entity.User;
+import com.example.finalproject.model.entity.UserEntity;
 import com.example.finalproject.model.service.UserServiceModel;
 import com.example.finalproject.repository.UserRepository;
 import com.example.finalproject.sec.CurrentUser;
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserServiceModel registerUser(UserServiceModel userServiceModel) {
 
-        User user = modelMapper.map(userServiceModel, User.class);
+        UserEntity user = modelMapper.map(userServiceModel, UserEntity.class);
         return modelMapper.map(userRepository.save(user), UserServiceModel.class);
     }
 
@@ -42,12 +42,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(Long id) {
+    public UserEntity findById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-//    @Override
-//    public void registerUser(UserRegistrationDTO userRegistrationDTO) {
-//
-//    }
+    @Override
+    public void isPlan() {
+
+    }
+
 }
