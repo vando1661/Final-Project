@@ -1,6 +1,5 @@
 package com.example.finalproject.model.dto.bainding;
 
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 public class UserLoginBindingModel {
