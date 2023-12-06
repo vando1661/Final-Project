@@ -11,7 +11,17 @@ public class CurrentUser {
 
     private String username;
 
+    private boolean isPlan;
+
     public CurrentUser() {
+    }
+
+    public boolean isPlan() {
+        return isPlan;
+    }
+
+    public void setPlan(boolean plan) {
+        isPlan = plan;
     }
 
     public String getUsername() {
