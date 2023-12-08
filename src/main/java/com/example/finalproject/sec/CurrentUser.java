@@ -13,7 +13,17 @@ public class CurrentUser {
 
     private boolean isPlan;
 
+    private String email;
+
     public CurrentUser() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public boolean isPlan() {
