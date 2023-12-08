@@ -3,11 +3,11 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head"></head>
-<body style="background-image: url('/pic/bk.jpg');">
+<body style="background-color:#c7b4a1">
 <header th:replace="fragments/header"></header>
 <main>
     <th:block th:if="${@currentUser.id == null}">
-        <div class="container-header mx-auto w-50 bg-blur text-center py-5" id="index_title">
+        <div class="container-header mx-auto w-50 bg-blur text-center py-5 rounded-5" style="background-color:cadetblue" id="index_title">
             <p class="h2 text-warning p-2">Welcome to</p>
             <h1 class="h1-title"> GYM CENTER</h1>
             <p class="h4 text-black">On the website you will find the perfect base for sports.</p>
@@ -58,33 +58,33 @@
                     <tr>
                         <td class="align-middle" style="background-color: #8b7d91; color: #f7af1a">09:00am</td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13 text-decoration-none" href="#" role="button">Dance</a>
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13 text-decoration-none" href="#" role="button" id="b1" onclick="toggleButton(this)">Dance</a>
                                 <div class="margin-10px-top font-size14">9:00-10:00</div>
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Yoga</a>
+                            <a class="bg-green calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b2" onclick="toggleButton(this)">Yoga</a>
                             <div class="margin-10px-top font-size14">9:00-10:00</div>
 
                         </td>
 
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Music</a>
+                            <a class="bg-yellow calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b3" onclick="toggleButton(this)">Music</a>
                             <div class="margin-10px-top font-size14">9:00-10:00</div>
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Dance</a>
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b4" onclick="toggleButton(this)">Dance</a>
                             <div class="margin-10px-top font-size14">9:00-10:00</div>
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Art</a>
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b5" onclick="toggleButton(this)">Art</a>
                             <div class="margin-10px-top font-size14">9:00-10:00</div>
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">English</a>
+                            <a class="bg-pink calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b6" onclick="toggleButton(this)">English</a>
                             <div class="margin-10px-top font-size14">9:00-10:00</div>
 
                         </td>
@@ -93,7 +93,7 @@
                     <tr>
                         <td class="align-middle" style="background-color: #8b7d91; color: #f7af1a">10:00am</td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Music</a>
+                            <a class="bg-yellow calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b7" onclick="toggleButton(this)">Music</a>
                             <div class="margin-10px-top font-size14">10:00-11:00</div>
 
                         </td>
@@ -101,17 +101,17 @@
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Art</a>
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b8" onclick="toggleButton(this)">Art</a>
                             <div class="margin-10px-top font-size14">10:00-11:00</div>
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Yoga</a>
+                            <a class="bg-green calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b9" onclick="toggleButton(this)">Yoga</a>
                             <div class="margin-10px-top font-size14">10:00-11:00</div>
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">English</a>
+                            <a class="bg-pink calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b10" onclick="toggleButton(this)">English</a>
                             <div class="margin-10px-top font-size14">10:00-11:00</div>
 
                         </td>
@@ -123,27 +123,27 @@
                     <tr>
                         <td class="align-middle" style="background-color: #8b7d91; color: #f7af1a">11:00am</td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Break</a>
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b11" onclick="toggleButton(this)">Break</a>
                             <div class="margin-10px-top font-size14">11:00-12:00</div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Break</a>
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b12" onclick="toggleButton(this)">Break</a>
                             <div class="margin-10px-top font-size14">11:00-12:00</div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Break</a>
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b13" onclick="toggleButton(this)">Break</a>
                             <div class="margin-10px-top font-size14">11:00-12:00</div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Break</a>
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b14" onclick="toggleButton(this)">Break</a>
                             <div class="margin-10px-top font-size14">11:00-12:00</div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Break</a>
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b15" onclick="toggleButton(this)">Break</a>
                             <div class="margin-10px-top font-size14">11:00-12:00</div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Break</a>
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b16" onclick="toggleButton(this)">Break</a>
                             <div class="margin-10px-top font-size14">11:00-12:00</div>
                         </td>
                     </tr>
@@ -154,17 +154,17 @@
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Art</a>
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b17" onclick="toggleButton(this)">Art</a>
                             <div class="margin-10px-top font-size14">12:00-1:00</div>
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Dance</a>
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b18" onclick="toggleButton(this)">Dance</a>
                             <div class="margin-10px-top font-size14">12:00-1:00</div>
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Music</a>
+                            <a class="bg-yellow calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b19" onclick="toggleButton(this)">Music</a>
                             <div class="margin-10px-top font-size14">12:00-1:00</div>
 
                         </td>
@@ -172,7 +172,7 @@
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Yoga</a>
+                            <a class="bg-green calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b20" onclick="toggleButton(this)">Yoga</a>
                             <div class="margin-10px-top font-size14">12:00-1:00</div>
                             <div class="font-size13 text-light-gray">Marta Healy</div>
                         </td>
@@ -181,12 +181,12 @@
                     <tr>
                         <td class="align-middle" style="background-color: #8b7d91; color: #f7af1a">01:00pm</td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">English</a>
+                            <a class="bg-pink calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b21" onclick="toggleButton(this)">English</a>
                             <div class="margin-10px-top font-size14">1:00-2:00</div>
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Music</a>
+                            <a class="bg-yellow calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b22" onclick="toggleButton(this)">Music</a>
                             <div class="margin-10px-top font-size14">1:00-2:00</div>
 
                         </td>
@@ -194,17 +194,17 @@
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">English</a>
+                            <a class="bg-pink calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b23" onclick="toggleButton(this)">English</a>
                             <div class="margin-10px-top font-size14">1:00-2:00</div>
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Yoga</a>
+                            <a class="bg-green calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b24" onclick="toggleButton(this)">Yoga</a>
                             <div class="margin-10px-top font-size14">1:00-2:00</div>
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Music</a>
+                            <a class="bg-yellow calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b25" onclick="toggleButton(this)">Music</a>
                             <div class="margin-10px-top font-size14">1:00-2:00</div>
 
                         </td>
@@ -214,6 +214,56 @@
             </div>
         </div>
     </th:block>
+    <!-- Вашият HTML код тук -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Функция за зареждане на състоянието на бутоните
+            function loadButtonState(userEmail) {
+                $(".calendar-button").each(function () {
+                    var buttonId = $(this).attr("id");
+                    var isButtonSelected = localStorage.getItem(userEmail + "_" + buttonId);
+
+                    if (isButtonSelected === "true") {
+                        $(this).addClass("selected");
+                    }
+                });
+            }
+
+            // Функция за запазване на състоянието на бутоните
+            function saveButtonState(userEmail, buttonId, isSelected) {
+                localStorage.setItem(userEmail + "_" + buttonId, isSelected);
+            }
+
+            // Обработчик за кликване на бутон
+            $(".calendar-button").click(function () {
+                // Проверка на броя на вече отбелязаните бутони
+                var selectedButtonsCount = $(".calendar-button.selected").length;
+
+                // Ако броят е по-голям от 8, не позволяваме ново отбелязване
+                if (selectedButtonsCount >= 8 && !$(this).hasClass("selected")) {
+                    alert("Можете да отбележите само 8 бутона.");
+                    return;
+                }
+
+                // Превключване на класа "selected"
+                $(this).toggleClass("selected");
+
+                var userEmail = /*[[${userEmail}]]*/ "user@example.com"; // Използвайте Thymeleaf за включване на стойността
+                var buttonId = $(this).attr("id");
+                var isSelected = $(this).hasClass("selected");
+
+                // Запазване на състоянието на бутона
+                saveButtonState(userEmail, buttonId, isSelected);
+            });
+
+            // Зареждане на състоянието при зареждане на страницата
+            var userEmail = /*[[${userEmail}]]*/ "user@example.com"; // Използвайте Thymeleaf за включване на стойността
+            loadButtonState(userEmail);
+        });
+    </script>
+
+    <!-- Вашият HTML код тук -->
 
 </main>
 <footer th:replace="fragments/footer"></footer>
