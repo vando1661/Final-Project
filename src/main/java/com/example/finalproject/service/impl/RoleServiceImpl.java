@@ -30,11 +30,6 @@ public class RoleServiceImpl implements RoleService {
                 .forEach(roleUserEnum -> {
                     RoleEntity roleEntity = new RoleEntity();
                     roleEntity.setRole(roleUserEnum);
-//                    if(currentUser.getId() == 1){
-//                        roleEntity.setRole(RoleUserEnum.ADMIN);
-//                    }else {
-//                        roleEntity.setRole(RoleUserEnum.USER);
-//                    }
                     roleRepository.save(roleEntity);
                 });
     }
