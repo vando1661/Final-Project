@@ -3,6 +3,9 @@ package com.example.finalproject.service;
 import com.example.finalproject.model.entity.PlanEntity;
 import com.example.finalproject.model.enums.PlanEnum;
 
+import java.awt.*;
+import java.util.List;
+
 public interface PlanService {
 
     void initPlan();
@@ -11,8 +14,8 @@ public interface PlanService {
 
     PlanEntity getPlanById(Long id);
 
-    PlanEntity getPlanEntityDetails();
 
+    List<PlanEntity> getAllPlans();
 
     void savePlan(PlanEntity planEntity);
 }
