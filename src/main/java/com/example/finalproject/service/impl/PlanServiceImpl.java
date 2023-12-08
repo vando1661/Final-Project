@@ -7,6 +7,8 @@ import com.example.finalproject.service.PlanService;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
+
 @Service
 public class PlanServiceImpl implements PlanService {
 
@@ -27,9 +29,9 @@ public class PlanServiceImpl implements PlanService {
                     PlanEntity planEntity = new PlanEntity();
                     planEntity.setPlan(plan);
                     switch (plan){
-                        case BASIC -> planEntity.setCredit(8);
-                        case STANDARD -> planEntity.setCredit(12);
-                        case PREMIUM -> planEntity.setCredit(16);
+                        case BASIC:
+                        case STANDARD:
+                        case PREMIUM:
                     }
                     this.planRepository.save(planEntity);
                 });
@@ -41,4 +43,31 @@ public class PlanServiceImpl implements PlanService {
                 .findByPlan(planEnum)
                 .orElse(null);
     }
+    @Override
+    public PlanEntity getPlanById(Long id) {
+        return planRepository.findById(id)
+                .orElse(null);
+    }
+//@Override
+//    public UserEntity getUserByUsername(String username) {
+//        return userRepository.findByUsername(username).orElse(null);
+//    }
+    @Override
+    public PlanEntity getPlanEntityDetails() {
+        PlanEntity planEntity = new PlanEntity();
+        planEntity.setId(planEntity.getId());
+        planEntity.setPlan(planEntity.getPlan());
+        planEntity.setPrice(planEntity.getPrice());
+        planEntity.setCredits(planEntity.getCredits());
+        planEntity.setHatKidsZone(planEntity.isHatKidsZone());
+        return planEntity;
+
+    }
+
+    @Override
+    public void savePlan(PlanEntity planEntity) {
+        planRepository.save(planEntity);
+    }
+
+
 }
