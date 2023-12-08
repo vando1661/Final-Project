@@ -23,38 +23,17 @@ public class UserEntity extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<RoleEntity> roles = new ArrayList<>();
+    @OneToOne()
+    private PlanEntity plans ;
 
-
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_plans",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "plan_id"))
-    private List<PlanEntity> plans = new ArrayList<>();
-
-    public List<PlanEntity> getPlans() {
+    public UserEntity() {
+    }
+    public PlanEntity getPlans() {
         return plans;
     }
 
-    public void setPlans(List<PlanEntity> plans) {
+    public void setPlans(PlanEntity plans) {
         this.plans = plans;
-    }
-
-    public List<RoleEntity> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<RoleEntity> roles) {
-        this.roles = roles;
-    }
-
-    public UserEntity() {
     }
 
     public String getUsername() {
