@@ -43,7 +43,7 @@ public class PlanController {
     public String plans(Model model){
 
 
-        List<PlanEnum> list = Arrays.asList(PlanEnum.values());
+        List<PlanEntity> list = planService.getAllPlans();
 
         model.addAttribute("currentUser",currentUser.getUsername());
         model.addAttribute("list",list);
