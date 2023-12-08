@@ -6,7 +6,7 @@ import com.example.finalproject.repository.PlanRepository;
 import com.example.finalproject.service.PlanService;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
+import java.awt.*;
 import java.util.List;
 
 @Service
@@ -20,21 +20,26 @@ public class PlanServiceImpl implements PlanService {
 
     @Override
     public void initPlan() {
+        PlanEntity planEntity = new PlanEntity();
+        planEntity.setPlan(PlanEnum.BASIC);
+        planEntity.setPrice(29.56);
+        planEntity.setCredits(8);
+        planEntity.setHatKidsZone(false);
+        this.planRepository.save(planEntity);
 
-        if(this.planRepository.count() != 0){
-            return;
-        }
-        Arrays.stream(PlanEnum.values())
-                .forEach(plan -> {
-                    PlanEntity planEntity = new PlanEntity();
-                    planEntity.setPlan(plan);
-                    switch (plan){
-                        case BASIC:
-                        case STANDARD:
-                        case PREMIUM:
-                    }
-                    this.planRepository.save(planEntity);
-                });
+        PlanEntity planEntity2 = new PlanEntity();
+        planEntity2.setPlan(PlanEnum.STANDARD);
+        planEntity2.setPrice(49.56);
+        planEntity2.setCredits(12);
+        planEntity2.setHatKidsZone(true);
+        this.planRepository.save(planEntity2);
+
+        PlanEntity planEntity3 = new PlanEntity();
+        planEntity3.setPlan(PlanEnum.PREMIUM);
+        planEntity3.setPrice(69.56);
+        planEntity3.setCredits(16);
+        planEntity3.setHatKidsZone(true);
+        this.planRepository.save(planEntity3);
     }
 
     @Override
@@ -48,21 +53,17 @@ public class PlanServiceImpl implements PlanService {
         return planRepository.findById(id)
                 .orElse(null);
     }
-//@Override
+
+    @Override
+    public List<PlanEntity> getAllPlans() {
+        return planRepository.findAll();
+    }
+
+    //@Override
 //    public UserEntity getUserByUsername(String username) {
 //        return userRepository.findByUsername(username).orElse(null);
 //    }
-    @Override
-    public PlanEntity getPlanEntityDetails() {
-        PlanEntity planEntity = new PlanEntity();
-        planEntity.setId(planEntity.getId());
-        planEntity.setPlan(planEntity.getPlan());
-        planEntity.setPrice(planEntity.getPrice());
-        planEntity.setCredits(planEntity.getCredits());
-        planEntity.setHatKidsZone(planEntity.isHatKidsZone());
-        return planEntity;
 
-    }
 
     @Override
     public void savePlan(PlanEntity planEntity) {
