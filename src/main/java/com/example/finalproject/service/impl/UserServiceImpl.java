@@ -5,6 +5,7 @@ import com.example.finalproject.model.service.UserServiceModel;
 import com.example.finalproject.repository.UserRepository;
 import com.example.finalproject.sec.CurrentUser;
 import com.example.finalproject.service.UserService;
+import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserServiceModel registerUser(UserServiceModel userServiceModel) {
-
         UserEntity user = modelMapper.map(userServiceModel, UserEntity.class);
         return modelMapper.map(userRepository.save(user), UserServiceModel.class);
     }
@@ -49,6 +49,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void isPlan() {
 
+    }
+
+    @Override
+    public UserEntity getUserByUsername(String username) {
+        return userRepository.findByUsername(username).orElse(null);
     }
 
 }
