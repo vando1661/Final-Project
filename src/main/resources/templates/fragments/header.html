@@ -33,13 +33,12 @@
                             <li><a class="dropdown-item text-warning" href="/healthy-food">Healthy food</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active text-warning" aria-current="page" th:href="@{/}">Home</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link text-warning" th:href="@{/about}">About</a>
                     </li>
                     <th:block th:if="${@currentUser.id == null}">
+
                         <li class="nav-item">
                             <a class="nav-link text-warning" th:href="@{/users/register}">Register</a>
                         </li>
@@ -49,6 +48,9 @@
                     </th:block>
 
                     <th:block th:unless="${@currentUser.id == null}">
+                        <li class="nav-item">
+                            <a class="nav-link active text-warning" th:href="@{/users/plans}">Plans</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-warning" th:href="@{/users/profile}">Profile</a>
                         </li>
