@@ -104,9 +104,7 @@ li{
     font-weight: bold;
     list-style: none;
 }
-.card {
-    background-color: #8b7d91;
-}
+
 .fa.fa-solid.fa-star{
     color: #f7af1a;
     padding-top: 18px;
@@ -128,6 +126,9 @@ li{
     font-weight: bold;
 
 }
+.card {
+    background-color: #8b7d91;
+}
 .card a {
     background: #e6dbb9;
     padding: 0 10px 2px 10px;
@@ -139,7 +140,13 @@ li{
     text-align: center;
     margin: 20px auto 28px;
     font-size: 16px;
-}.card-plan a {
+}
+.card-plan {
+    background-color: #8b7d91;
+    padding-bottom: 28px;
+
+}
+.card-plan a {
      background: #f7af1a;
      color : #54456b;
      font-weight: bold;
@@ -150,6 +157,7 @@ li{
      text-align: center;
      margin: 20px auto 28px;
      font-size: 16px;
+    padding: 6px;
  }
 .option li{
     padding: 4px;
@@ -161,7 +169,6 @@ li{
     padding: 14px;
 }
 .container-fluid1 {
-    padding-top: 120px;
     padding-bottom: 100px;
 }
 .price, .title {
@@ -169,12 +176,18 @@ li{
 }
 
 .title-class {
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
     font-weight: bold;
     text-align: center;
     font-size: 12px;
-    padding-bottom: 80px;
+    padding: 160px;
     margin-bottom: 10px;
-    color: #f7af1a;
+    color:darkcyan;
+    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+    font-family: "Arial Black", sans-serif;
+
 }
 .notification-class{
     font-weight: bold;
@@ -182,8 +195,9 @@ li{
     font-size: 12px;
     padding-bottom: 80px;
     margin-top: 200px;
-    color: blue;
+    color: darkcyan;
     text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+    font-family: "Arial Black", sans-serif;
 }
 .location {
     padding-left: 10px;
@@ -309,4 +323,7 @@ a {
 
 .desc{
     color:#fff;
+}
+.selected {
+    background-color: #ffcc00;
 }
