@@ -14,7 +14,11 @@ public class PlanEntity {
     @Enumerated(EnumType.STRING)
     private PlanEnum plan;
 
+    private Double price;
+
     private Integer credits;
+
+    private boolean hatKidsZone;
 
     public Long getId() {
         return id;
@@ -32,11 +36,27 @@ public class PlanEntity {
         this.plan = plan;
     }
 
-    public Integer getCredit() {
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getCredits() {
         return credits;
     }
 
-    public void setCredit(Integer credits) {
+    public void setCredits(Integer credits) {
         this.credits = credits;
+    }
+
+    public boolean isHatKidsZone() {
+        return hatKidsZone;
+    }
+
+    public void setHatKidsZone(boolean hatKidsZone) {
+        this.hatKidsZone = hatKidsZone;
     }
 }
