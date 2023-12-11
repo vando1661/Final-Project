@@ -4,10 +4,10 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/head"></head>
-<body style="background-color:#c7b4a1">
+<body style="background-color:#c7c5bc">
 <header th:replace="fragments/header"></header>
 <main>
-    <div class="jumbotron">
+    <div class="jumbotron p-5">
     <th:block th:if="${@currentUser.id == null}">
         <div class="h1-form">
         <h1>Register</h1>
@@ -76,6 +76,7 @@
     </th:block>
     </div>
 </main>
+<div class="title-class rounded-5 mx-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
 <footer th:replace="fragments/footer"></footer>
 </body>
 </html>
