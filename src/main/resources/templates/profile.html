@@ -3,10 +3,11 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head"></head>
-<body style="background-color:#c7b4a1">
+<body style="background-color:#c7c5bc">
 <header th:replace="fragments/header"></header>
 <main>
     <th:block th:if="${@currentUser.id == null}">
+        <div style="padding-bottom: 40px">
         <div class="container-header mx-auto w-50 bg-blur text-center py-5 rounded-5" style="background-color:cadetblue" id="index_title">
             <p class="h2 text-warning p-2">Welcome to</p>
             <h1 class="h1-title"> GYM CENTER</h1>
@@ -19,10 +20,10 @@
                 now and check our deals.
             </h3>
         </div>
+        </div>
     </th:block>
     <th:block th:unless="${@currentUser.id == null}">
-        <div class="container-fluid1">
-            <div class="container">
+        <div class="container p-5">
                 <div class="row justify-content-center">
                     <div class="col-sm-4">
                         <div class="card text-center">
@@ -37,9 +38,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
+
+ </div>
+        <div class="container pb-5">
             <div class="table-responsive">
                 <table class="table table-bordered text-center">
                     <thead>
@@ -212,60 +213,11 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
     </th:block>
-    <!-- Вашият HTML код тук -->
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Функция за зареждане на състоянието на бутоните
-            function loadButtonState(userEmail) {
-                $(".calendar-button").each(function () {
-                    var buttonId = $(this).attr("id");
-                    var isButtonSelected = localStorage.getItem(userEmail + "_" + buttonId);
-
-                    if (isButtonSelected === "true") {
-                        $(this).addClass("selected");
-                    }
-                });
-            }
-
-            // Функция за запазване на състоянието на бутоните
-            function saveButtonState(userEmail, buttonId, isSelected) {
-                localStorage.setItem(userEmail + "_" + buttonId, isSelected);
-            }
-
-            // Обработчик за кликване на бутон
-            $(".calendar-button").click(function () {
-                // Проверка на броя на вече отбелязаните бутони
-                var selectedButtonsCount = $(".calendar-button.selected").length;
-
-                // Ако броят е по-голям от 8, не позволяваме ново отбелязване
-                if (selectedButtonsCount >= 8 && !$(this).hasClass("selected")) {
-                    alert("Можете да отбележите само 8 бутона.");
-                    return;
-                }
-
-                // Превключване на класа "selected"
-                $(this).toggleClass("selected");
-
-                var userEmail = /*[[${userEmail}]]*/ "user@example.com"; // Използвайте Thymeleaf за включване на стойността
-                var buttonId = $(this).attr("id");
-                var isSelected = $(this).hasClass("selected");
-
-                // Запазване на състоянието на бутона
-                saveButtonState(userEmail, buttonId, isSelected);
-            });
-
-            // Зареждане на състоянието при зареждане на страницата
-            var userEmail = /*[[${userEmail}]]*/ "user@example.com"; // Използвайте Thymeleaf за включване на стойността
-            loadButtonState(userEmail);
-        });
-    </script>
-
-    <!-- Вашият HTML код тук -->
-
 </main>
+<div class="title-class rounded-5 mx-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
 <footer th:replace="fragments/footer"></footer>
 </body>
 </html>
