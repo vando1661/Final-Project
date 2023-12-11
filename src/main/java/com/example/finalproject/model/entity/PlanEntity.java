@@ -2,6 +2,8 @@ package com.example.finalproject.model.entity;
 
 import com.example.finalproject.model.enums.PlanEnum;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "plans")
@@ -9,6 +11,7 @@ public class PlanEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Max(3)
     private Long id;
 
     @Enumerated(EnumType.STRING)
