@@ -7,10 +7,11 @@
 <body style="background-color:#c7c5bc">
 <header th:replace="fragments/header"></header>
 <main>
+    <div style="padding-bottom: 140px;padding-top: 60px">
     <div class="jumbotron p-5">
     <th:block th:if="${@currentUser.id == null}">
         <div class="h1-form">
-        <h1>Register</h1>
+        <h1>Sign in</h1>
     </div>
     <form th:action="@{/users/register}" th:method="POST" th:object="${userRegisterBindingModel}"
           class=" mx-auto w-25 bg-blur rounded-3 p-2" style="background-color:cadetblue">
@@ -74,6 +75,7 @@
     <th:block th:unless="${@currentUser.id == null}">
         <div class="notification-class" ><h1>Hello, you are logged in.</h1><h1> Please log out of your account.</h1><h1> If you want a New registration.</h1></div>
     </th:block>
+    </div>
     </div>
 </main>
 <div class="title-class rounded-5 mx-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
