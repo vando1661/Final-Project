@@ -12,34 +12,34 @@
             <p class="h2 text-warning p-2">Welcome to</p>
             <h1 class="h1-title"> GYM CENTER</h1>
             <p class="h4 text-black">On the website you will find the perfect base for sports.</p>
-            <h4 class="h1-title">Mens sana in corpore sano.</h4>
             <h3 class="text-black">
                 <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/login">Login</a>
                 if you have an account or
-                <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/register">Register</a>
+                <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/register">Sign in</a>
                 now and check our deals.
             </h3>
         </div>
         </div>
     </th:block>
     <th:block th:unless="${@currentUser.id == null}">
+        <th:block th:if="${selectedPlan == null}">
         <div class="container p-5">
                 <div class="row justify-content-center">
                     <div class="col-sm-4">
                         <div class="card text-center">
                             <div class="title rounded">
-                                <th:block th:unless="${@currentUser.id == null}">
+
                                     <h2 class="p-2 rounded" style="background-color: #e6dbb9" pt-2>Profile</h2>
                                     <h5 class="profile p-3">Username : <span th:text="${@currentUser.username}"></span></h5>
-                                    <h5 class="profile p-3">Credits : <span th:text="${@currentUser.username}"></span></h5>
-                                    <h5 class="profile p-3">Plan : <span th:text="${@currentUser.username}"></span></h5>
-                                </th:block>
+                                    <h5 class="profile p-3">Credits : <span th:text="${@selectPlan.credits}"></span></h5>
+                                    <h5 class="profile p-3">Plan : <span th:text="${@selectPlan.plan}"></span></h5>
+
                             </div>
                         </div>
                     </div>
                 </div>
 
- </div>
+        </div>
         <div class="container pb-5">
             <div class="table-responsive">
                 <table class="table table-bordered text-center">
@@ -207,7 +207,6 @@
                         <td style="background-color: #e6dbb9">
                             <a class="bg-yellow calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b25" onclick="toggleButton(this)">Music</a>
                             <div class="margin-10px-top font-size14">1:00-2:00</div>
-
                         </td>
                     </tr>
                     </tbody>
@@ -215,6 +214,10 @@
             </div>
 
         </div>
+        </th:block>
+        <th:block th:unless="${selectedPlan == null}">
+                <h1 class="h1 text-center" style="padding-top: 200px; padding-bottom: 200px;color: cadetblue;font-weight:bold">You currently do not have a plan selected.</h1>
+        </th:block>
     </th:block>
 </main>
 <div class="title-class rounded-5 mx-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
