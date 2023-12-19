@@ -17,4 +17,12 @@ public interface UserService {
     void isPlan();
 
     UserEntity getUserByUsername(String username);
+
+    UserEntity getUserById(Long userId);
+
+    void saveUser(UserEntity user);
+
+    boolean userHasPlan(UserEntity user);
+
+
 }
