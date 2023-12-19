@@ -6,7 +6,7 @@
 <body style="background-color:#c7c5bc">
 <header th:replace="fragments/header"></header>
 <main>
-    <div style="padding: 40px">
+    <div style="padding-bottom: 240px;padding-top: 80px">
     <th:block th:if="${@currentUser.id == null}">
         <div class="container text-light ">
             <div class="h1-form">
@@ -44,7 +44,7 @@
                 <button type="submit" class="btn btn-outline-warning" id="reg-submit">LOGIN</button>
             </div>
         </form>
-        </div>
+    </div>
     </th:block>
     <th:block th:unless="${@currentUser.id == null}">
         <div class="notification-class"><h1>Hello, you are already logged in.</h1></div>
