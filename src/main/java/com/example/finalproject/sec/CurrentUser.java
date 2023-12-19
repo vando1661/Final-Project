@@ -11,8 +11,6 @@ public class CurrentUser {
 
     private String username;
 
-    private boolean isPlan;
-
     private String email;
 
     public CurrentUser() {
@@ -26,13 +24,6 @@ public class CurrentUser {
         this.email = email;
     }
 
-    public boolean isPlan() {
-        return isPlan;
-    }
-
-    public void setPlan(boolean plan) {
-        isPlan = plan;
-    }
 
     public String getUsername() {
         return username;
