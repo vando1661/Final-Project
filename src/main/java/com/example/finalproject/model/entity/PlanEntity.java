@@ -11,7 +11,6 @@ public class PlanEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Max(3)
     private Long id;
 
     @Enumerated(EnumType.STRING)
@@ -22,6 +21,9 @@ public class PlanEntity {
     private Integer credits;
 
     private boolean hatKidsZone;
+
+    @OneToOne(mappedBy = "plan")
+    private UserEntity  user;
 
     public Long getId() {
         return id;
@@ -61,5 +63,13 @@ public class PlanEntity {
 
     public void setHatKidsZone(boolean hatKidsZone) {
         this.hatKidsZone = hatKidsZone;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 }
