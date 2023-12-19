@@ -18,6 +18,9 @@ public interface PlanService {
     List<PlanEntity> getAllPlans();
 
     void savePlan(PlanEntity planEntity);
+
+    PlanEntity getSelectedPlanForUser(Long id);
+
 }
 
 
