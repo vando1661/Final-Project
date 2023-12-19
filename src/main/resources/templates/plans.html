@@ -3,7 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head"></head>
-<body style="background-color:#c7b4a1">
+<body style="background-color:#c7c5bc">
 <header th:replace="fragments/header"></header>
 <main>
 
@@ -16,20 +16,21 @@
             <h3 class="text-black">
                 <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/login">Login</a>
                 if you have an account or
-                <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/register">Register</a>
+                <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/register">Sign in</a>
                 now and check our deals.
             </h3>
         </div>
     </th:block>
     <th:block th:unless="${@currentUser.id == null}">
+            <form th:action="@{/users/savePlan}" th:method="POST">
         <div class="container-fluid1 p-5">
-            <div class="container">
-                <div class="title-class rounded-5" style="background-image: url('/pic/An-Exercise-Poster.jpg')"><h1>
-                    Choose your plan. More credits, more classes...</h1></div>
-                <div class="container d-flex flex-nowrap">
-                <div th:each="planEntity : ${list}" class="w-100 mb-3">
-                     <div style="margin: 10px;padding-top: 14px">
-                        <div class="card-plan text-center rounded">
+           <div class="container">
+               <div class="title-class rounded-5" style="background-image: url('/pic/An-Exercise-Poster.jpg')"><h1>
+                                     Choose your plan. More credits, more classes...</h1></div>
+                          <div class="container d-flex flex-nowrap">
+                                     <div th:each="planEntity : ${list}" class="w-100 mb-3">
+                                         <div style="margin: 10px;padding-top: 14px">
+                                         <div class="card-plan text-center rounded">
                             <div class="title rounded-top p-1">
                               <img src="/pic/logo.png" th:alt="logo" style="padding: 6px">
                                 <h2 th:text="${planEntity.plan}"></h2>
@@ -45,63 +46,22 @@
                                     <li><i th:class="${planEntity.hatKidsZone} ? 'fa fa-check' : 'fa fa-times' " aria-hidden="true"></i> Free Kids Zone</li>
                                     <li><i class="fa fa-check" aria-hidden="true"></i> <span th:text="${planEntity.credits}"></span> Credits</li>
                                 </ul>
+
                               </div>
-<!--                            <a th:href="@{/users/{userId}/profile(userId=${userId})}">Order Now</a>-->
-                            <a href="/users/profile">Order Now </a>
+<!--                               <input type="hidden" name="userId" th:value="${planEntity.id}"/>-->
+<!--                               <input type="hidden" name="plansId" th:value="${planEntity.id}"/>-->
+                               <button type="submit" class="order-button">Order Now</button>
                         </div>
-                       </div>
-                </div>
-                    </div>
-            </div>
+                        </div>
+
+                  </div>
+               </div>
+           </div>
         </div>
+
+        </form>
     </th:block>
-                <!-- END Col one -->
-                <!--                    <div class="col-sm-4">-->
-                <!--                        <div class="card-plan text-center rounded">-->
-                <!--                            <div class="title rounded-top p-1">-->
-                <!--                                <i class="fa fa-solid fa-star" aria-hidden="true"></i>-->
-                <!--                                <i class="fa fa-solid fa-star" aria-hidden="true"></i>-->
-                <!--                                <h2>Standard</h2>-->
-                <!--                            </div>-->
-                <!--                            <div class="price p-1">-->
-                <!--                                <h4><sup>£</sup> 69.96 </h4>-->
-                <!--                            </div>-->
-                <!--                            <div class="option">-->
-                <!--                                <ul>-->
-                <!--                                    <li><i class="fa fa-check" aria-hidden="true"></i> 24/7 Fitness</li>-->
-                <!--                                    <li><i class="fa fa-check" aria-hidden="true"></i> Free Wifi</li>-->
-                <!--                                    <li><i class="fa fa-check" aria-hidden="true"></i> Free Parking</li>-->
-                <!--                                    <li><i class="fa fa-check" aria-hidden="true"></i> Free Kids Zone</li>-->
-                <!--                                    <li><i class="fa fa-check" aria-hidden="true"></i> 12 Credits</li>-->
-                <!--                                </ul>-->
-                <!--                            </div>-->
-                <!--                            <a href="/users/profile">Order Now </a>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-                <!--                    &lt;!&ndash; END Col two &ndash;&gt;-->
-                <!--                    <div class="col-sm-4">-->
-                <!--                        <div class="card-plan text-center rounded">-->
-                <!--                            <div class="title rounded-top p-1">-->
-                <!--                                <i class="fa fa-solid fa-star" aria-hidden="true"></i>-->
-                <!--                                <i class="fa fa-solid fa-star" aria-hidden="true"></i>-->
-                <!--                                <i class="fa fa-solid fa-star" aria-hidden="true"></i>-->
-                <!--                                <h2>Premium</h2>-->
-                <!--                            </div>-->
-                <!--                            <div class="price p-1">-->
-                <!--                                <h4><sup>£</sup> 89.96 </h4>-->
-                <!--                            </div>-->
-                <!--                            <div class="option">-->
-                <!--                                <ul>-->
-                <!--                                    <li><i class="fa fa-check" aria-hidden="true"></i> 24/7 Fitness</li>-->
-                <!--                                    <li><i class="fa fa-check" aria-hidden="true"></i> Free Wifi</li>-->
-                <!--                                    <li><i class="fa fa-check" aria-hidden="true"></i> Free Parking</li>-->
-                <!--                                    <li><i class="fa fa-check" aria-hidden="true"></i> Free Kids Zone</li>-->
-                <!--                                    <li><i class="fa fa-check" aria-hidden="true"></i> 16 Credits</li>-->
-                <!--                                </ul>-->
-                <!--                            </div>-->
-                <!--                            <a href="/users/profile">Order Now </a>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
+
 
     <div class="notification-class"><h1>Hello, you already have a plan.</h1></div>
     <div class="pt-3-0"><br></div>
