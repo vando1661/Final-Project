@@ -56,4 +56,20 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username).orElse(null);
     }
 
+    @Override
+    public UserEntity getUserById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid userId: " + userId));
+    }
+
+    @Override
+    public void saveUser(UserEntity user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public boolean userHasPlan(UserEntity user) {
+        return user.getPlan() != null;
+    }
+
 }
