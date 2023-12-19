@@ -23,17 +23,19 @@ public class UserEntity extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    @OneToOne()
-    private PlanEntity plans ;
+    @OneToOne
+    @JoinColumn(name = "plan_id")
+    private PlanEntity plan;
 
     public UserEntity() {
     }
-    public PlanEntity getPlans() {
-        return plans;
+
+    public PlanEntity getPlan() {
+        return plan;
     }
 
-    public void setPlans(PlanEntity plans) {
-        this.plans = plans;
+    public void setPlan(PlanEntity plan) {
+        this.plan = plan;
     }
 
     public String getUsername() {
