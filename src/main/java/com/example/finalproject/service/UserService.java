@@ -11,10 +11,8 @@ public interface UserService {
 
     void loginUser(Long id, String username);
 
-
     UserEntity findById(Long id);
 
-    void isPlan();
 
     UserEntity getUserByUsername(String username);
 
@@ -23,6 +21,7 @@ public interface UserService {
     void saveUser(UserEntity user);
 
     boolean userHasPlan(UserEntity user);
+
 
 
 }
