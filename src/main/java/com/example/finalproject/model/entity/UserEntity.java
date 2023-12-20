@@ -23,7 +23,7 @@ public class UserEntity extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "plan_id")
     private PlanEntity plan;
 
