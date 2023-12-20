@@ -5,6 +5,7 @@ import com.example.finalproject.model.entity.UserEntity;
 import com.example.finalproject.sec.CurrentUser;
 import com.example.finalproject.service.PlanService;
 import com.example.finalproject.service.UserService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -40,17 +41,15 @@ public class PlanController {
     }
 
     @PostMapping("/savePlan")
-    public String savePlan(@RequestParam("userId") Long userId, @RequestParam("plansId") Long plansId, Model model) {
+    @Transactional
+    public String savePlan(@RequestParam("userId") Long userId, @RequestParam("planId") Long planId,Model model) {
 
         UserEntity user = userService.getUserById(userId);
-        PlanEntity plan = planService.getPlanById(plansId);
+        PlanEntity selectedPlan  = planService.getPlanById(planId);
 
-
-        user.setPlan(plan);
+        user.setPlan(selectedPlan);
         userService.saveUser(user);
-        planService.savePlan(plan);
-        model.addAttribute("selectedPlan", plan);
-        return "redirect:/profile";
+        return "redirect:profile";
 
     }
 
@@ -61,4 +60,5 @@ public class PlanController {
         model.addAttribute("selectedPlan",selectedPlan);
         return "profile";
     }
+
 }
