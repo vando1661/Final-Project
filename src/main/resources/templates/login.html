@@ -2,9 +2,9 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head"></head>
+<head th:replace="~{fragments/head}"></head>
 <body style="background-color:#c7c5bc">
-<header th:replace="fragments/header"></header>
+<header th:replace="~{fragments/header}"></header>
 <main>
     <div style="padding-bottom: 240px;padding-top: 80px">
     <th:block th:if="${@currentUser.id == null}">
@@ -47,10 +47,10 @@
     </div>
     </th:block>
     <th:block th:unless="${@currentUser.id == null}">
-        <div class="notification-class"><h1>Hello, you are already logged in.</h1></div>
+        <div class="notification-class" style=": 200px"><h1>Hello, you are already logged in.</h1></div>
     </th:block>
 </main>
 <div class="title-class rounded-5 m-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
-<footer th:replace="fragments/footer"></footer>
+<footer th:replace="~{fragments/footer}"></footer>
 </body>
 </html>
