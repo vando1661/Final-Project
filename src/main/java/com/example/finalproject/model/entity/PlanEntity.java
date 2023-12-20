@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Size;
 
+import java.util.List;
+
 @Entity
 @Table(name = "plans")
 public class PlanEntity {
@@ -22,8 +24,8 @@ public class PlanEntity {
 
     private boolean hatKidsZone;
 
-    @OneToOne(mappedBy = "plan")
-    private UserEntity  user;
+    @OneToMany(mappedBy = "plan")
+    private List<UserEntity> users;
 
     public Long getId() {
         return id;
@@ -65,11 +67,11 @@ public class PlanEntity {
         this.hatKidsZone = hatKidsZone;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public List<UserEntity> getUsers() {
+        return users;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
+    public void setUsers(List<UserEntity> users) {
+        this.users = users;
     }
 }
