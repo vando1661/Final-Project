@@ -2,9 +2,9 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head"></head>
+<head th:replace="~{fragments/head}"></head>
 <body style="background-color:#c7c5bc">
-<header th:replace="fragments/header"></header>
+<header th:replace="~{fragments/header}"></header>
 
   <main>
     <div class="container" style="padding-top: 50px">
@@ -85,6 +85,6 @@
     </div>
     <div class="title-class rounded-5 m-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
   </main>
-<footer th:replace="fragments/footer"></footer>
+<footer th:replace="~{fragments/footer}"></footer>
 </body>
 </html>
