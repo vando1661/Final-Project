@@ -67,12 +67,6 @@ public class PlanServiceImpl implements PlanService {
         return planRepository.findAll();
     }
 
-    //@Override
-//    public UserEntity getUserByUsername(String username) {
-//        return userRepository.findByUsername(username).orElse(null);
-//    }
-
-
     @Override
     public void savePlan(PlanEntity planEntity) {
 
@@ -82,12 +76,9 @@ public class PlanServiceImpl implements PlanService {
     @Override
     public PlanEntity getSelectedPlanForUser(Long userId) {
 
-        UserEntity user = userRepository.findById(userId).orElse(null);
+        return userRepository.findById(userId)
+                .map(UserEntity::getPlan)
+                .orElse(null);
 
-        if(user != null && user.getPlan() != null){
-            return  user.getPlan();
-        }else {
-            return null;
-        }
     }
 }
