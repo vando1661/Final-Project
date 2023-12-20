@@ -46,10 +46,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public void isPlan() {
-
-    }
 
     @Override
     public UserEntity getUserByUsername(String username) {
