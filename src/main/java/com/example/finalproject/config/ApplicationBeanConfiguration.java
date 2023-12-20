@@ -13,7 +13,7 @@ public class ApplicationBeanConfiguration {
         return new ModelMapper();
     }
 
-    @Bean(name = "selectPlan")
+    @Bean(name = "selectedPlan")
     public PlanEntity selectedPlan() {
         return new PlanEntity();
     }
