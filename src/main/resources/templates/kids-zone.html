@@ -2,17 +2,76 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head"></head>
-<body style="background-image: url('/pic/bk.jpg');">
-<header th:replace="fragments/header"></header>
-<main><div class="ima-manu">
-    <img src="/pic/kids-zone1.jpg">
-    <img src="/pic/kids-zone2.jpg">
-    <img src="/pic/kids-zone3.jpg">
-    <img src="/pic/kids-zone4.jpg">
-    <img src="/pic/kids-zone5.jpg">
+<head th:replace="~{fragments/head}"></head>
+<body style="background-color:#c7c5bc">
+<header th:replace="~{fragments/header}"></header>
+ <main>
+     <div class="container" style="padding-top: 50px">
+        <div class="card float-left my-5"  style="background-color: cornsilk">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="card-block">
+                        <div class="kz-text text-center" style="font-weight: bold; color:cadetblue;padding-top: 200px;font-size: 22px">
+                        <p>Here with us you can leave your children and devote yourself to your training.</p>
+                        <p>They will have fun and will be watched by us.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <img class="d-block w-100 rounded" src="/pic/kids-zone1.jpg" alt="">
+                </div>
+            </div>
+        </div>
 
-</div></main>
-<footer th:replace="fragments/footer"></footer>
+         <div class="card float-left my-5"  style="background-color: #bcc7ad">
+             <div class="row">
+                 <div class="col-sm-5">
+                     <img class="d-block w-100 rounded" src="/pic/kids-zone2.jpg" alt="">
+                 </div>
+                 <div class="col-sm-7">
+                     <div class="card-block">
+                         <div class="kz-text text-center" style="font-weight: bold; color: #54456b;padding-top: 200px;font-size: 22px">
+                         <p>Here with us you can leave your children and devote yourself to your training.</p>
+                         <p>They will have fun and will be watched by us.</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="card float-left my-5"  style="background-color: cornsilk">
+             <div class="row">
+                 <div class="col-sm-7">
+                     <div class="card-block">
+                        <div class="kz-text text-center" style="font-weight: bold; color: cadetblue;padding-top: 130px;font-size: 22px">
+                            <p>Here with us you can leave your children and devote yourself to your training.</p>
+                            <p>They will have fun and will be watched by us.</p>
+                        </div>
+
+                     </div>
+                 </div>
+                 <div class="col-sm-5">
+                     <img class="d-block w-100 rounded" src="/pic/kids-zone3.jpg" alt="">
+                 </div>
+             </div>
+         </div>
+         <div class="card float-left my-5"  style="background-color: #bcc7ad">
+             <div class="row">
+                 <div class="col-sm-5">
+                     <img class="d-block w-100 rounded" src="/pic/kids-zone4.jpg" alt="">
+                 </div>
+                 <div class="col-sm-7">
+                     <div class="card-block">
+                         <div class="kz-text text-center" style="font-weight: bold; color: #54456b;padding-top: 110px;font-size: 22px">
+                             <p>Here with us you can leave your children and devote yourself to your training.</p>
+                             <p>They will have fun and will be watched by us.</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class="title-class rounded-5 m-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
+ </main>
+<footer th:replace="~{fragments/footer}"></footer>
 </body>
 </html>

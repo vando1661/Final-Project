@@ -9,6 +9,7 @@ import java.util.Optional;
 @Repository
 public interface PlanRepository extends JpaRepository<PlanEntity,Long> {
 
+    Optional<PlanEntity> findByPlan(PlanEnum planEnum);
 
-Optional<PlanEntity> findByPlan(PlanEnum planEnum);
+
 }

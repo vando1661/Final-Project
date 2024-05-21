@@ -2,22 +2,87 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head"></head>
-<body style="background-image: url('/pic/bk.jpg');">
-<header th:replace="fragments/header"></header>
-<main><div class="ima-manu">
+<head th:replace="~{fragments/head}"></head>
+<body style="background-color:#c7c5bc">
+<header th:replace="~{fragments/header}"></header>
+<main>
+  <div class="container" style="padding-top: 50px">
+    <div class="card float-left my-5"  style="background-color: cornsilk">
+      <div class="row">
+        <div class="col-sm-7">
+          <div class="card-block">
+            <div class="kz-text text-center" style="font-weight: bold; color:cadetblue;padding-top: 140px;font-size: 22px">
+              <h1>Be strong.</h1>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <img class="d-block w-100 rounded" src="/pic/gym4.jpg" alt="">
+        </div>
+      </div>
+    </div>
 
-  <img src="/pic/gym4.jpg">
-  <img src="/pic/gymm.jpg">
-  <img src="/pic/gymm1.jpg">
-  <img src="/pic/gymm2.jpg">
-  <img src="/pic/gymm3.jpg">
-  <img src="/pic/gymm4.jpg">
-  <img src="/pic/gymm5.jpg">
-  <img src="/pic/gymm6.jpg">
-  <img src="/pic/gymm7.jpg">
+    <div class="card float-left my-5"  style="background-color: #bcc7ad">
+      <div class="row">
+        <div class="col-sm-5">
+          <img class="d-block w-100 rounded" src="/pic/gymm.jpg" alt="">
+        </div>
+        <div class="col-sm-7">
+          <div class="card-block">
+            <div class="kz-text text-center" style="font-weight: bold; color: #54456b;padding-top: 140px;font-size: 22px">
+              <h1>Don't stop believing in yourself.</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card float-left my-5"  style="background-color: cornsilk">
+      <div class="row">
+        <div class="col-sm-7">
+          <div class="card-block">
+            <div class="kz-text text-center" style="font-weight: bold; color: cadetblue;padding-top: 120px;font-size: 22px">
+             <h1>Be healthy.</h1>
+            </div>
 
-</div></main>
-<footer th:replace="fragments/footer"></footer>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <img class="d-block w-100 rounded" src="/pic/gymm3.jpg" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="card float-left my-5"  style="background-color: #bcc7ad">
+      <div class="row">
+        <div class="col-sm-5">
+          <img class="d-block w-100 rounded" src="/pic/gymm5.jpg" alt="">
+        </div>
+        <div class="col-sm-7">
+          <div class="card-block">
+            <div class="kz-text text-center" style="font-weight: bold; color: #54456b;padding-top: 140px;font-size: 22px">
+              <h1>You can...</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card float-left my-5"  style="background-color: cornsilk">
+      <div class="row">
+        <div class="col-sm-7">
+          <div class="card-block">
+            <div class="kz-text text-center" style="font-weight: bold; color: cadetblue;padding-top: 130px;font-size: 22px">
+              <h1>Be yourself.</h1>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <img class="d-block w-100 rounded" src="/pic/gymm7.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="title-class rounded-5 m-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
+</main>
+<footer th:replace="~{fragments/footer}"></footer>
 </body>
 </html>

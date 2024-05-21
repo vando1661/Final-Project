@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerConfirm(@Valid UserRegisterBindingModel userRegisterBindingModel,CurrentUser currentUser,
+    public String registerConfirm(@Valid UserRegisterBindingModel userRegisterBindingModel,
                                   BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors() || !userRegisterBindingModel.getPassword()
@@ -84,14 +84,14 @@ public class UserController {
 
         userService.loginUser(userServiceModel.getId(), userLoginBindingModel.getUsername());
 
-
-            if (!currentUser.isPlan()) {
-        userService.isPlan();
-        return "redirect:profile";
-
-    } else {
-        return "redirect:plan";
-    }
+      return "redirect:profile";
+//            if (!currentUser.isPlan()) {
+//        userService.isPlan();
+//        return "redirect:profile";
+//
+//    } else {
+//        return "redirect:plan";
+//    }
     }
 
     @GetMapping("/logout")

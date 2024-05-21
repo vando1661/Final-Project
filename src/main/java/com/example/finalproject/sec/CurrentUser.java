@@ -11,18 +11,19 @@ public class CurrentUser {
 
     private String username;
 
-    private boolean isPlan;
+    private String email;
 
     public CurrentUser() {
     }
 
-    public boolean isPlan() {
-        return isPlan;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPlan(boolean plan) {
-        isPlan = plan;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
 
     public String getUsername() {
         return username;

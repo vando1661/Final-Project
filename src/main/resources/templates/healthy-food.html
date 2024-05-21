@@ -2,20 +2,69 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head"></head>
-<body style="background-image: url('/pic/bk.jpg');">
-<header th:replace="fragments/header"></header>
-<main><div class="ima-manu">
-    <img src="/pic/HFMAndLogo.jpg" class="align-self-end" alt="pic-menu">
-    <img src="/pic/foodP1.jpg">
-    <img src="/pic/foodP.jpg">
-    <img src="/pic/food3.jpg">
-    <img src="/pic/restPic.jpg">
-    <img src="/pic/gymmRest.jpg">
-    <img src="/pic/gymmRest1.jpg">
-    <img src="/pic/gymmRest3.jpg">
+<head th:replace="~{fragments/head}"></head>
+<body style="background-color:#c7c5bc">
+<header th:replace="~{fragments/header}"></header>
+<main>
 
-</div></main>
-<footer th:replace="fragments/footer"></footer>
+        <div class="container" style="padding-top: 50px">
+            <div class="card float-left my-5"  style="background-color: cornsilk">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <div class="card-block">
+                            <div class="kz-text text-center" style="font-weight: bold; color: cadetblue;padding-top: 200px;font-size: 22px">
+                                <p>Good food and a good environment for a key to good achievements.</p>
+                                <p>Good food healthy body.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <img class="d-block w-100 rounded" src="/pic/restPic.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card float-left my-5"  style="background-color: #bcc7ad">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <img class="d-block w-100 rounded" src="/pic/gymmRest1.jpg" alt="">
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="card-block">
+                            <div class="kz-text text-center" style="font-weight: bold; color: #54456b;padding-top: 200px;font-size: 22px">
+                                <p>Good food and a good environment for a key to good achievements.</p>
+                                <p>Good food healthy body.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card float-left my-5"  style="background-color: cornsilk">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <div class="card-block">
+                            <div class="kz-text text-center" style="font-weight: bold; color: cadetblue;padding-top: 130px;font-size: 20px">
+                                <p>Good food and a good environment for a key to good achievements.</p>
+                                <p>Good food healthy body.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <img class="d-block w-100 rounded" src="/pic/gymmRest3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="flex-column text-center p-4 m-2">
+        <img class="p-3" src="/pic/foodP1.jpg">
+        <img class="p-3" src="/pic/foodP.jpg">
+        <img class="p-3" src="/pic/food3.jpg">
+    </div>
+
+
+    <div class="title-class rounded-5 m-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
+</main>
+<footer th:replace="~{fragments/footer}"></footer>
 </body>
 </html>

@@ -2,44 +2,43 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head"></head>
-<body style="background-image: url('/pic/bk.jpg');">
-<header th:replace="fragments/header"></header>
+<head th:replace="~{fragments/head}"></head>
+<body style="background-color:#c7c5bc">
+<header th:replace="~{fragments/header}"></header>
 <main>
     <th:block th:if="${@currentUser.id == null}">
-        <div class="container-header mx-auto w-50 bg-blur text-center py-5" id="index_title">
+        <div style="padding-bottom: 40px">
+        <div class="container-header mx-auto w-50 bg-blur text-center py-5 rounded-5" style="background-color:cadetblue" id="index_title">
             <p class="h2 text-warning p-2">Welcome to</p>
             <h1 class="h1-title"> GYM CENTER</h1>
             <p class="h4 text-black">On the website you will find the perfect base for sports.</p>
-            <h4 class="h1-title">Mens sana in corpore sano.</h4>
             <h3 class="text-black">
                 <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/login">Login</a>
                 if you have an account or
-                <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/register">Register</a>
+                <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/register">Sign in</a>
                 now and check our deals.
             </h3>
         </div>
+        </div>
     </th:block>
     <th:block th:unless="${@currentUser.id == null}">
-        <div class="container-fluid1">
-            <div class="container">
+        <th:block th:unless="${selectedPlan == null}">
+        <div class="container p-5">
                 <div class="row justify-content-center">
                     <div class="col-sm-4">
                         <div class="card text-center">
                             <div class="title rounded">
-                                <th:block th:unless="${@currentUser.id == null}">
                                     <h2 class="p-2 rounded" style="background-color: #e6dbb9" pt-2>Profile</h2>
                                     <h5 class="profile p-3">Username : <span th:text="${@currentUser.username}"></span></h5>
-                                    <h5 class="profile p-3">Credits : <span th:text="${@currentUser.username}"></span></h5>
-                                    <h5 class="profile p-3">Plan : <span th:text="${@currentUser.username}"></span></h5>
-                                </th:block>
+                                    <h5 class="profile p-3">Credits : <span th:text="${selectedPlan?.credits}"></span></h5>
+                                    <h5 class="profile p-3">Plan : <span th:text="${selectedPlan.plan}"></span></h5>
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
-        <div class="container">
+        <div class="container pb-5">
             <div class="table-responsive">
                 <table class="table table-bordered text-center">
                     <thead>
@@ -58,164 +57,257 @@
                     <tr>
                         <td class="align-middle" style="background-color: #8b7d91; color: #f7af1a">09:00am</td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13 text-decoration-none" href="#" role="button">Dance</a>
-                                <div class="margin-10px-top font-size14">9:00-10:00</div>
+
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13 text-decoration-none" href="#" role="button" id="b1" onclick="toggleButton(this)">Swimming</a>
+                            <div class="check pt-1">
+
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+                            </div>
 
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Yoga</a>
-                            <div class="margin-10px-top font-size14">9:00-10:00</div>
-
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b2" onclick="toggleButton(this)">Swimming</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel1" value="" aria-label="...">
+                            </div>
                         </td>
 
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Music</a>
-                            <div class="margin-10px-top font-size14">9:00-10:00</div>
-
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b3" onclick="toggleButton(this)">Swimming</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel2" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Dance</a>
-                            <div class="margin-10px-top font-size14">9:00-10:00</div>
-
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b4" onclick="toggleButton(this)">Swimming</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel3" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Art</a>
-                            <div class="margin-10px-top font-size14">9:00-10:00</div>
-
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b5" onclick="toggleButton(this)">Swimming</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel4" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">English</a>
-                            <div class="margin-10px-top font-size14">9:00-10:00</div>
-
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b6" onclick="toggleButton(this)">Swimming</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel5" value="" aria-label="...">
+                            </div>
                         </td>
                     </tr>
 
                     <tr>
                         <td class="align-middle" style="background-color: #8b7d91; color: #f7af1a">10:00am</td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Music</a>
-                            <div class="margin-10px-top font-size14">10:00-11:00</div>
-
-                        </td>
-                        <td class="bg-light-gray" style="background-color: #e6dbb9">
-
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b7" onclick="toggleButton(this)">Tennis</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel6" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Art</a>
-                            <div class="margin-10px-top font-size14">10:00-11:00</div>
-
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b8" onclick="toggleButton(this)">Tennis</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel7" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Yoga</a>
-                            <div class="margin-10px-top font-size14">10:00-11:00</div>
-
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b9" onclick="toggleButton(this)">Tennis</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel8" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">English</a>
-                            <div class="margin-10px-top font-size14">10:00-11:00</div>
-
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b10" onclick="toggleButton(this)">Tennis</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel9" value="" aria-label="...">
+                            </div>
                         </td>
-                        <td class="bg-light-gray" style="background-color: #e6dbb9">
-
+                        <td style="background-color: #e6dbb9">
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b11" onclick="toggleButton(this)">Tennis</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel10" value="" aria-label="...">
+                            </div>
+                        </td>
+                        <td style="background-color: #e6dbb9">
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b12" onclick="toggleButton(this)">Tennis</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel11" value="" aria-label="...">
+                            </div>
                         </td>
                     </tr>
 
                     <tr>
                         <td class="align-middle" style="background-color: #8b7d91; color: #f7af1a">11:00am</td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Break</a>
-                            <div class="margin-10px-top font-size14">11:00-12:00</div>
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b13" onclick="toggleButton(this)">Gymnastics</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel12" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Break</a>
-                            <div class="margin-10px-top font-size14">11:00-12:00</div>
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b14" onclick="toggleButton(this)">Gymnastics</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel13" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Break</a>
-                            <div class="margin-10px-top font-size14">11:00-12:00</div>
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b15" onclick="toggleButton(this)">Gymnastics</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel14" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Break</a>
-                            <div class="margin-10px-top font-size14">11:00-12:00</div>
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b16" onclick="toggleButton(this)">Gymnastics</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel15" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Break</a>
-                            <div class="margin-10px-top font-size14">11:00-12:00</div>
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b17" onclick="toggleButton(this)">Gymnastics</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel16" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Break</a>
-                            <div class="margin-10px-top font-size14">11:00-12:00</div>
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b18" onclick="toggleButton(this)">Gymnastics</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel17" value="" aria-label="...">
+                            </div>
                         </td>
                     </tr>
 
                     <tr>
-                        <td class="align-middle" style="background-color: #8b7d91; color: #f7af1a">12:00pm</td>
-                        <td class="bg-light-gray" style="background-color: #e6dbb9">
-
+                        <td class="align-middle" style="background-color: #8b7d91; color: #f7af1a">14:00pm</td>
+                        <td style="background-color: #e6dbb9">
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b19" onclick="toggleButton(this)">Swimming</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel18" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Art</a>
-                            <div class="margin-10px-top font-size14">12:00-1:00</div>
-
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b20" onclick="toggleButton(this)">Swimming</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel19" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Dance</a>
-                            <div class="margin-10px-top font-size14">12:00-1:00</div>
-
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b21" onclick="toggleButton(this)">Swimming</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel20" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Music</a>
-                            <div class="margin-10px-top font-size14">12:00-1:00</div>
-
-                        </td>
-                        <td class="bg-light-gray" style="background-color: #e6dbb9">
-
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b22" onclick="toggleButton(this)">Swimming</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel21" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Yoga</a>
-                            <div class="margin-10px-top font-size14">12:00-1:00</div>
-                            <div class="font-size13 text-light-gray">Marta Healy</div>
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b23" onclick="toggleButton(this)">Swimming</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel22" value="" aria-label="...">
+                            </div>
+                        </td>
+                        <td style="background-color: #e6dbb9">
+                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b24" onclick="toggleButton(this)">Swimming</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel23" value="" aria-label="...">
+                            </div>
                         </td>
                     </tr>
 
                     <tr>
-                        <td class="align-middle" style="background-color: #8b7d91; color: #f7af1a">01:00pm</td>
+                        <td class="align-middle" style="background-color: #8b7d91; color: #f7af1a">16:00am</td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">English</a>
-                            <div class="margin-10px-top font-size14">1:00-2:00</div>
-
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b25" onclick="toggleButton(this)">Tennis</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel24" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Music</a>
-                            <div class="margin-10px-top font-size14">1:00-2:00</div>
-
-                        </td>
-                        <td class="bg-light-gray" style="background-color: #e6dbb9">
-
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b26" onclick="toggleButton(this)">Tennis</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel25" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">English</a>
-                            <div class="margin-10px-top font-size14">1:00-2:00</div>
-
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b27" onclick="toggleButton(this)">Tennis</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel26" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Yoga</a>
-                            <div class="margin-10px-top font-size14">1:00-2:00</div>
-
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b128" onclick="toggleButton(this)">Tennis</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel27" value="" aria-label="...">
+                            </div>
                         </td>
                         <td style="background-color: #e6dbb9">
-                            <a class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button">Music</a>
-                            <div class="margin-10px-top font-size14">1:00-2:00</div>
-
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b29" onclick="toggleButton(this)">Tennis</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel28" value="" aria-label="...">
+                            </div>
+                        </td>
+                        <td style="background-color: #e6dbb9">
+                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b30" onclick="toggleButton(this)">Tennis</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel29" value="" aria-label="...">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle" style="background-color: #8b7d91; color: #f7af1a">18:00am</td>
+                        <td style="background-color: #e6dbb9">
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b31" onclick="toggleButton(this)">Gymnastics</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel30" value="" aria-label="...">
+                            </div>
+                        </td>
+                        <td style="background-color: #e6dbb9">
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b32" onclick="toggleButton(this)">Gymnastics</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel31" value="" aria-label="...">
+                            </div>
+                        </td>
+                        <td style="background-color: #e6dbb9">
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b33" onclick="toggleButton(this)">Gymnastics</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel32" value="" aria-label="...">
+                            </div>
+                        </td>
+                        <td style="background-color: #e6dbb9">
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b34" onclick="toggleButton(this)">Gymnastics</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel33" value="" aria-label="...">
+                            </div>
+                        </td>
+                        <td style="background-color: #e6dbb9">
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b35" onclick="toggleButton(this)">Gymnastics</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel34" value="" aria-label="...">
+                            </div>
+                        </td>
+                        <td style="background-color: #e6dbb9">
+                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b36" onclick="toggleButton(this)">Gymnastics</a>
+                            <div class="check pt-1">
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel35" value="" aria-label="...">
+                            </div>
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
-    </th:block>
 
+        </div>
+        </th:block>
+        <th:block th:if="${selectedPlan == null}">
+                <h1 class="h1 text-center" style="padding-top: 200px; padding-bottom: 200px;color: cadetblue;font-weight:bold">You currently do not have a plan selected.</h1>
+        </th:block>
+    </th:block>
 </main>
-<footer th:replace="fragments/footer"></footer>
+<div class="title-class rounded-5 mx-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
+<footer th:replace="~{fragments/footer}"></footer>
 </body>
 </html>
