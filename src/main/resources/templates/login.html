@@ -35,10 +35,10 @@
                        id="password"
                        aria-describedby="passwordHelpInline" placeholder="Password">
             </div>
-            <!--        <div class="form-group form-check col-md-10">-->
-            <!--            <input type="checkbox" class="form-check-input " id="remember" name="remember">-->
-            <!--            <label class="form-check-label" for="remember">Remember me</label>-->
-            <!--        </div>-->
+                    <div class="form-group form-check col-md-10">
+                        <input type="checkbox" class="form-check-input" id="showPassword" name="remember" onclick="togglePassword()">
+                        <label class="form-check-label" for="showPassword">show password</label>
+                    </div>
 
             <div>
                 <button type="submit" class="btn btn-outline-warning" id="reg-submit">LOGIN</button>
@@ -52,5 +52,16 @@
 </main>
 <div class="title-class rounded-5 m-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
 <footer th:replace="~{fragments/footer}"></footer>
+<script>
+    function togglePassword() {
+        var passwordField = document.getElementById("password");
+        var showPasswordCheckbox = document.getElementById("showPassword");
+        if (showPasswordCheckbox.checked) {
+            passwordField.type = "text";
+        } else {
+            passwordField.type = "password";
+        }
+    }
+</script>
 </body>
 </html>
