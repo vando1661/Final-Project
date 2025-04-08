@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head}"></head>
+<body>
+<header th:replace="~{fragments/header}"></header>
+<table class="m-3" style="color: #000000">
+<thead>
+<tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Email</th>
+    <th>Roles</th>
+    <th>Plan</th>
+</tr>
+</thead>
+<tbody>
+<tr style="color: #54456b; font-weight: bold;" th:each="user : ${users}">
+    <td  th:text="${user.id}"></td>
+    <td th:text="${user.username}"></td>
+    <td th:text="${user.name}"></td>
+    <td th:text="${user.surname}"></td>
+    <td th:text="${user.email}"></td>
+    <td th:text="${user.role.role}"></td>
+    <td>
+        <form th:if="${user.id != 1}"
+              th:action="@{/users/edit-role/{id}(id=${user.id})}"
+              method="get">
+            <button type="submit" class="btn btn-warning btn-sm"
+                    onclick="return confirm('Are you sure you want to edit this role?');">
+                Edit Roles
+            </button>
+        </form>
+    </td>
+    <td th:text="${user?.plan != null ? user.plan.getPlan() : 'no plan'}"></td>
+    <td>
+        <a th:if="${user?.plan != null}"
+           th:href="@{/users/remove-plan/{userId}(userId=${user.id})}"
+           class="btn btn-danger btn-sm"
+           onclick="return confirm('Are you sure you want to remove this plan?');">
+            Delete Plan
+        </a>
+    </td>
+    <td>
+        <form th:action="@{/users/delete-user}" method="post">
+            <input type="hidden" name="userIdToDelete" th:value="${user.id}" />
+            <button type="submit" class="btn btn-danger btn-sm"
+                    onclick="return confirm('Are you sure you want to delete this user?');">
+                    Delete User
+            </button>
+        </form>
+    </td>
+</tr>
+<div id="successMessage1" th:if="${error != null}" class="alert alert-danger text-center m-2">
+    <span th:text="${error}"></span>
+</div>
+<div id="successMessage" th:if="${message != null}" class="alert alert-success text-center m-2">
+    <span th:text="${message}"></span>
+</div>
+<script>
+    setTimeout(function () {
+        const messages = ["successMessage", "successMessage1"];
+
+        messages.forEach(function (id) {
+            const messageDiv = document.getElementById(id);
+            if (messageDiv) {
+                messageDiv.style.opacity = "0";
+                setTimeout(() => {
+                    messageDiv.style.display = "none";
+                }, 1000);
+            }
+        });
+    }, 3000);
+</script>
+</tbody>
+</table>
+<footer th:replace="~{fragments/footer}"></footer>
+</body>
+</html>

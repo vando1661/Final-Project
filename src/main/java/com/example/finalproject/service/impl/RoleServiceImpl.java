@@ -3,7 +3,6 @@ package com.example.finalproject.service.impl;
 import com.example.finalproject.model.entity.RoleEntity;
 import com.example.finalproject.model.enums.RoleUserEnum;
 import com.example.finalproject.repository.RoleRepository;
-import com.example.finalproject.sec.CurrentUser;
 import com.example.finalproject.service.RoleService;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +12,10 @@ import java.util.Arrays;
 public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleRepository;
-    private final CurrentUser currentUser;
 
-    public RoleServiceImpl(RoleRepository roleRepository, CurrentUser currentUser) {
+    public RoleServiceImpl(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
-        this.currentUser = currentUser;
+
     }
 
     @Override

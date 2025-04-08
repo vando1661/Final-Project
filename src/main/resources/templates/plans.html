@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragments/head}"></head>
-<body style="background-color:#c7c5bc">
+<body>
 <header th:replace="~{fragments/header}"></header>
 <main>
-    <th:block th:if="${@currentUser.id == null}">
+    <th:block sec:authorize="!isAuthenticated()">
         <div class="container-header mx-auto w-50 bg-blur text-center pb-5 rounded-5" style="background-color:cadetblue"
              id="index_title">
             <p class="h2 text-warning p-2">Welcome to</p>
@@ -20,8 +19,9 @@
             </h3>
         </div>
     </th:block>
-    <th:block th:unless="${@currentUser.id == null}">
+    <th:block sec:authorize="isAuthenticated()">
         <form th:action="@{/users/savePlan}" th:method="POST">
+
                 <div class="container-fluid1 p-5">
                     <div class="container">
                         <div class="title-class rounded-5" style="background-image: url('/pic/An-Exercise-Poster.jpg')">
@@ -53,24 +53,18 @@
                                             </ul>
 
                                         </div>
-                                        <input type="hidden" name="userId" th:value="${@currentUser.id}"/>
-                                        <!--                                <input type="radio" name="planId" th:value="${planEntity.id}" />-->
-                                        <!--                               <input type="hidden" name="planId" th:value="${planEntity.id}"/>-->
+                                            <input type="hidden" name="userId" th:value="${#authentication.name}"/>
+
                                         <button type="submit" class="order-button" name="planId"
                                                 th:value="${planEntity.id}">Order Now
                                         </button>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
-<!--        <th:block th:if="${@userServiceImpl.userHasPlan(currentUser) == null}">-->
-<!--            <div class="notification-class"><h1>Hello, you already have a plan.</h1></div>-->
-<!--            <div class="pt-3-0"><br></div>-->
-<!--        </th:block>-->
     </th:block>
 
 </main>

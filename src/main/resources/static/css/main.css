@@ -80,14 +80,18 @@ body {
     flex-direction: column;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 100% 100%;
-    /*background-image: url('/static/pic/bk.jpg');*/
-    /*no-repeat center center fixed;*/
-    /*background-size: cover;*/
-    /*style: "background-image: url('/static/pic/bk.jpg')"*/
+    background-size: cover;
+    height: 100%;
+
+    background-position: center;
+    background-color:#c7c5bc;
+    /*no-repeat: center center fixed;*/
+
+    /*!*style: "background-image: url('/static/pic/bk.jpg')"*!*/
 }
 .navbar.navbar-expand-md{
     text-align: right;
+
 }
 #index_title {
     font-family: "Arial Black", sans-serif;
@@ -327,3 +331,15 @@ a {
 .selected {
     background-color: #ffcc00;
 }
+.invalid-feedback {
+    display: none;
+}
+.is-invalid + .invalid-feedback {
+    display: block;
+}
+
+.fade-out {
+     opacity: 1;
+     transition: opacity 1s ease-out;
+}
+

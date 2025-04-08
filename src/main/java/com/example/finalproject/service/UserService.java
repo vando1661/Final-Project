@@ -1,26 +1,25 @@
 package com.example.finalproject.service;
 
+import com.example.finalproject.model.entity.PlanEntity;
 import com.example.finalproject.model.entity.UserEntity;
 import com.example.finalproject.model.service.UserServiceModel;
-import org.apache.catalina.User;
+import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
+
     UserServiceModel registerUser(UserServiceModel userServiceModel);
 
-    UserServiceModel findByUsernameAndPassword(String username, String password);
-
-    void loginUser(Long id, String username);
-
-    UserEntity findById(Long id);
-
-
-    UserEntity getUserByUsername(String username);
-
-    UserEntity getUserById(Long userId);
+    Optional<UserEntity> findByUsername(String username);
 
     void saveUser(UserEntity user);
 
-    boolean userHasPlan(UserEntity user);
+    List<UserEntity> getAllUsers();
+
+    void deleteUser(Long userId, Long userIdToDelete);
+
+
+
 
 
 

@@ -2,7 +2,20 @@ package com.example.finalproject.model.entity;
 
 import com.example.finalproject.model.enums.RoleUserEnum;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "roles")
 public class RoleEntity {
@@ -11,21 +24,10 @@ public class RoleEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, unique = true)
     private RoleUserEnum role;
 
-    public Long getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserEntity> users = new ArrayList<>();
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public RoleUserEnum getRole() {
-        return role;
-    }
-
-    public void setRole(RoleUserEnum role) {
-        this.role = role;
-    }
 }

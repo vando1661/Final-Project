@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragments/head}"></head>
-<body style="background-color:#c7c5bc">
+<body>
 <header th:replace="~{fragments/header}"></header>
 <main>
     <div class="container-fluid1">
@@ -13,14 +14,14 @@
             <h1 class="h1-title"> GYM CENTER</h1>
             <p class="h4 text-black">On the website you will find the perfect base for sports.</p>
 
-            <th:block th:if="${@currentUser.id == null}">
+            <div sec:authorize="!isAuthenticated()">
                 <h3 class="text-black">
                     <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/login">Login</a>
                     if you have an account or
                     <a style="text-shadow: 0px 0px 6px rgba(255,255,255,0.7);" href="/users/register">Sign in</a>
                     now and check our deals.
                 </h3>
-            </th:block>
+            </div>
         </div>
 
         <div class="container p-5">
@@ -67,7 +68,6 @@
                                 <li><i class="fa fa-check" aria-hidden="true"></i> 12 Credits</li>
                             </ul>
                         </div>
-                        <!--                                <a href="/users/profile">Order Now </a>-->
                     </div>
                 </div>
                 <!-- END Col two -->
@@ -209,7 +209,7 @@
                         </div>
                     </div>
                 </div>
-</main>
+  </main>
 <div class="title-class rounded-5 m-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
 <footer th:replace="~{fragments/footer}"></footer>
 </body>

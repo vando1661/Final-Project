@@ -2,12 +2,18 @@ package com.example.finalproject.web;
 
 import com.example.finalproject.model.dto.bainding.UserLoginBindingModel;
 import com.example.finalproject.model.dto.bainding.UserRegisterBindingModel;
+import com.example.finalproject.model.entity.UserEntity;
 import com.example.finalproject.model.service.UserServiceModel;
-import com.example.finalproject.sec.CurrentUser;
 import com.example.finalproject.service.UserService;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,10 +23,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/users")
 public class UserController {
-
 
     private final UserService userService;
     private final ModelMapper modelMapper;
@@ -29,7 +36,6 @@ public class UserController {
         this.userService = userService;
         this.modelMapper = modelMapper;
     }
-
 
     @GetMapping("/register")
     public String register() {
@@ -61,43 +67,43 @@ public class UserController {
         }
         return "login";
     }
-
     @PostMapping("/login")
-    public String login(@Valid UserLoginBindingModel userLoginBindingModel
-            , BindingResult bindingResult, RedirectAttributes redirectAttributes, CurrentUser currentUser) {
-
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
-
-            return "redirect:login";
-        }
-        UserServiceModel userServiceModel = userService
-                .findByUsernameAndPassword(userLoginBindingModel.getUsername(), userLoginBindingModel.getPassword());
-
-        if (userServiceModel == null) {
-            redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
-            redirectAttributes.addFlashAttribute("isFound", false);
-
-            return "redirect:login";
+    public String loginConfirm(@AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            return "redirect:/users/login";
         }
 
-        userService.loginUser(userServiceModel.getId(), userLoginBindingModel.getUsername());
 
-      return "redirect:profile";
-//            if (!currentUser.isPlan()) {
-//        userService.isPlan();
-//        return "redirect:profile";
-//
-//    } else {
-//        return "redirect:plan";
-//    }
+        if (userDetails.getAuthorities().stream()
+                .anyMatch(authority -> authority.getAuthority().equals("ROLE_ADMIN"))) {
+                return "redirect:/admin-dashboard";
+        }
+
+        return "redirect:/profile";
     }
 
+//    @GetMapping("/profile")
+//    public String showProfile(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+//        if (userDetails == null) {
+//            return "redirect:/login";
+//        }
+//        Optional<UserEntity> user = userService.findByUsername(userDetails.getUsername());
+//        if (user.isEmpty()) {
+//            return "redirect:/login";
+//        }
+//
+//        model.addAttribute("username", user.get().getUsername());
+////        model.addAttribute("email", user.get().getEmail());
+//        return "profile";
+//    }
+
     @GetMapping("/logout")
-    public String logout(HttpSession httpSession){
-        httpSession.invalidate();
-        return "redirect:/";
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/home";
     }
 
     @ModelAttribute
