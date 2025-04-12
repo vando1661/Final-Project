@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,30 +15,30 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "plans")
-public class PlanEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class PlanEntity extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private PlanEnum plan;
-
     private Double price;
-
-    private Integer credits;
-
+    @Column(nullable = false)
+    private int credits;
     private boolean hatKidsZone;
+    @Column(name = "initial_credits", nullable = false, updatable = false)
+    private int initialCredits;
 
     @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserEntity> users = new ArrayList<>();
 
 
-    public PlanEntity(PlanEnum plan, Double price, Integer credits, boolean hatKidsZone) {
+    public PlanEntity(PlanEnum plan, Double price, Integer credits,boolean hatKidsZone) {
         this.plan = plan;
         this.price = price;
         this.credits = credits;
         this.hatKidsZone = hatKidsZone;
+
+    }
+    public void resetCredits() {
+        this.credits = this.initialCredits;
     }
 
 

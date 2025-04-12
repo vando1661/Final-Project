@@ -9,21 +9,25 @@ import java.util.Optional;
 
 public interface PlanService {
 
-    void initPlan();
-
-    PlanEntity findByPlanEnum(PlanEnum planEnum);
+//    void initPlan();
+//
+//    PlanEntity findByPlanEnum(PlanEnum planEnum);
 
     PlanEntity getPlanById(Long id);
 
+//    void changeUserPlan(UserEntity user, PlanEntity newPlan);
 
     List<PlanEntity> getAllPlans();
 
-//    void savePlan(PlanEntity planEntity);
+//    boolean userHasPlan(UserEntity user);
 //
-//    Optional<PlanEntity> getSelectedPlanForUser(Long id);
-    boolean userHasPlan(UserEntity user);
+//    void removePlanFromUser(Long userId);
+//    void resetPlanCredits(Long planId);
+//    void changeUserPlan(Long userId, Long newPlanId);
+    void savePlan(PlanEntity plan);
+    long count();
+//    void selectPlan(Long userId, Long planId);
 
-    void removePlanFromUser(Long userId);
 
 }
 

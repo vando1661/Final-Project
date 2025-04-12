@@ -60,9 +60,12 @@
 <div id="successMessage" th:if="${message != null}" class="alert alert-success text-center m-2">
     <span th:text="${message}"></span>
 </div>
+<div id="successMessage3" th:if="${message1 != null}" class="alert alert-success text-center m-2">
+    <span th:text="${message1}"></span>
+</div>
 <script>
     setTimeout(function () {
-        const messages = ["successMessage", "successMessage1"];
+        const messages = ["successMessage", "successMessage1", "successMessage3"];
 
         messages.forEach(function (id) {
             const messageDiv = document.getElementById(id);
@@ -75,6 +78,7 @@
         });
     }, 3000);
 </script>
+
 </tbody>
 </table>
 <footer th:replace="~{fragments/footer}"></footer>

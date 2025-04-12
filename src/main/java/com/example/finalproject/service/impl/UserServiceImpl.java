@@ -1,13 +1,12 @@
 package com.example.finalproject.service.impl;
 
-import com.example.finalproject.model.entity.PlanEntity;
+
 import com.example.finalproject.model.entity.RoleEntity;
 import com.example.finalproject.model.entity.UserEntity;
 import com.example.finalproject.model.enums.RoleUserEnum;
-import com.example.finalproject.model.service.UserServiceModel;
+import com.example.finalproject.model.serviceModel.UserServiceModel;
 import com.example.finalproject.repository.RoleRepository;
 import com.example.finalproject.repository.UserRepository;
-
 import com.example.finalproject.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -29,6 +27,7 @@ public class UserServiceImpl implements UserService {
         this.modelMapper = modelMapper;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+
     }
 
     @Override
@@ -55,13 +54,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username);
     }
 
-
-//    @Override
-//    public UserEntity getUserById(Long userId) {
-//        return userRepository.findById(userId)
-//                .orElseThrow(() -> new IllegalArgumentException("Invalid userId: " + userId));
-//    }
-
     @Override
     public void saveUser(UserEntity user) {
         userRepository.save(user);
@@ -80,6 +72,10 @@ public class UserServiceImpl implements UserService {
         }
         Optional<UserEntity> optionalUser = userRepository.findById(userIdToDelete);
         optionalUser.ifPresent(userRepository::delete);
+    }
+    @Override
+    public Optional<UserEntity> findById(Long id) {
+        return userRepository.findById(id);
+    }
 
-}
 }

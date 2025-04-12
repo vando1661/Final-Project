@@ -36,7 +36,7 @@ public class SecurityConfig {
                                 "/tennis", "/swimming", "/fitness", "/gymnastics"
                         ).permitAll()
                         .requestMatchers("/pic/**").permitAll()
-                        .requestMatchers("/users/login", "/users/register", "/users/logout", "/users/profile").permitAll()
+                        .requestMatchers("/users/login", "/users/register", "/users/logout", "/users/profile","/users/edit-profile").permitAll()
                         .requestMatchers("/users/plans", "/users/savePlan").authenticated()
                         .requestMatchers("/users/remove-plan/**").hasRole("ADMIN")
                         .requestMatchers("/users/admin-dashboard").hasRole("ADMIN")

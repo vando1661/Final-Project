@@ -1,4 +1,4 @@
-package com.example.finalproject.model.service;
+package com.example.finalproject.model.serviceModel;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,6 @@ public class UserServiceModel {
     private String surname;
     private String email;
     private String password;
-
 
     public UserServiceModel() {
     }

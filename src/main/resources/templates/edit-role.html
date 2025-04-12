@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+
+<head th:replace="~{fragments/head}"></head>
+<body>
+<header th:replace="~{fragments/header}"></header>
+<main>
+<form th:action="@{/users/edit-role/{id}(id=${user.id})}" method="post">
+    <div class="container text-light ">
+        <div class="h1-form">
+            <h1>Select role:</h1>
+        </div>
+    </div>
+    <select id="role" name="role" class="form-select m-4 mx-auto w-5 bg-blur rounded-3 p-2" style="background-color:white; color: #54456b; width: 300px;">
+        <option th:each="r : ${roles}" th:value="${r}" th:text="${r}"
+                th:selected="${r == user.role}"></option>
+    </select>
+    <div class="text-center">
+    <button type="submit" class="btn btn-success mx-auto w-5" style="color: #f7af1a; width: 300px;">Save</button>
+    </div>
+</form>
+</main>
+<footer th:replace="~{fragments/footer}"></footer>
+</body>
+</html>

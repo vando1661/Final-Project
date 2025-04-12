@@ -43,6 +43,7 @@ public class PlanController {
 
         UserEntity user = userOptional.get();
 
+
         if (user.getPlan() != null) {
             return "redirect:/users/profile";
         }
@@ -50,6 +51,7 @@ public class PlanController {
         List<PlanEntity> list = planService.getAllPlans();
         model.addAttribute("list", list);
         model.addAttribute("hasPlan", user.getPlan() != null);
+
         return "plans";
 
     }
@@ -74,20 +76,6 @@ public class PlanController {
         return "redirect:/users/profile";
     }
 
-    @GetMapping("/users/profile")
-    public String showProfile(Model model, @AuthenticationPrincipal UserDetails userDetails) {
-        Optional<UserEntity> user = userService.findByUsername(userDetails.getUsername());
 
-        if (user.isEmpty()) {
-            return "redirect:/users/login";
-        }
-
-        UserEntity userE = user.get()   ;
-        PlanEntity selectedP = userE.getPlan();
-
-        model.addAttribute("selectedP", selectedP);
-
-        return "profile";
-    }
 
 }

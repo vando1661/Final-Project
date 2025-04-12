@@ -38,4 +38,11 @@ public class RoleServiceImpl implements RoleService {
                 .findByRole(roleUserEnum)
                 .orElse(null);
     }
+
+    @Override
+    public RoleEntity findByRole(RoleUserEnum roleUserEnum) {
+        return roleRepository.findByRole(roleUserEnum)
+                .orElseThrow(() -> new IllegalArgumentException("Role not found: " + roleUserEnum));
+    }
+
 }

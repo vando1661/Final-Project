@@ -20,187 +20,91 @@
             </h3>
         </div>
         </div>
-    </th:block>
-        <th:block sec:authorize="isAuthenticated()">
-            <th:block th:if="${selectedP != null}">
-                <div id="successMessage" th:if="${planSelected}" class="alert alert-success text-center m-2">
-                    <p>Your plan has been successfully selected!</p>
-                </div>
-            <div class="container p-5">
-                <div class="row justify-content">
-                    <div class="col-sm-6">
-                        <div class="card text-center">
-                            <div class="title rounded">
-                                    <h2 class="p-2 rounded" style="background-color: #e6dbb9" pt-2>Profile</h2>
-                                    <h5 class="profile p-3"><span th:text="${#authentication.name}"></span></h5>
-                                    <h5 class="profile p-3">Credits : <span th:text="${selectedP.credits}"></span></h5>
-                                    <h5 class="profile p-3">Plan : <span th:text="${selectedP.plan}"></span></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card text-center">
-                            <div class="title rounded">
-                                <h2 class="p-2 rounded" style="background-color: #e6dbb9" pt-2>work board</h2>
-                                <h5 class="profile p-3"></h5>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            <div class="container pb-5">
-            <div class="table-responsive">
-                <table class="table table-bordered text-center">
-                    <thead>
-                    <tr class="tr-days">
-                        <th class="text-uppercase" style="background-color: #569181; color: #f7af1a">Monday</th>
-                        <th class="text-uppercase" style="background-color: #569181; color: #f7af1a">Tuesday</th>
-                        <th class="text-uppercase" style="background-color: #569181; color: #f7af1a">Wednesday</th>
-                        <th class="text-uppercase" style="background-color: #569181; color: #f7af1a">Thursday</th>
-                        <th class="text-uppercase" style="background-color: #569181; color: #f7af1a">Friday</th>
-                        <th class="text-uppercase" style="background-color: #569181; color: #f7af1a">Saturday</th>
-                    </tr>
-                    </thead>
-                    <tbody class="tbody-calender">
-                    <tr>
-                        <td style="background-color: #e6dbb9">
-
-                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13 text-decoration-none" href="#" role="button" id="b1" onclick="toggleButton(this)">Swimming</a>
-                            <div class="check pt-1">
-
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-                            </div>
-
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b2" onclick="toggleButton(this)">Swimming</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel1" value="" aria-label="...">
-                            </div>
-                        </td>
-
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b3" onclick="toggleButton(this)">Swimming</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel2" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b4" onclick="toggleButton(this)">Swimming</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel3" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b5" onclick="toggleButton(this)">Swimming</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel4" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-sky calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b6" onclick="toggleButton(this)">Swimming</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel5" value="" aria-label="...">
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b7" onclick="toggleButton(this)">Tennis</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel6" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b8" onclick="toggleButton(this)">Tennis</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel7" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b9" onclick="toggleButton(this)">Tennis</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel8" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b10" onclick="toggleButton(this)">Tennis</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel9" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b11" onclick="toggleButton(this)">Tennis</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel10" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-purple calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b12" onclick="toggleButton(this)">Tennis</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel11" value="" aria-label="...">
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b13" onclick="toggleButton(this)">Gymnastics</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel12" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b14" onclick="toggleButton(this)">Gymnastics</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel13" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b15" onclick="toggleButton(this)">Gymnastics</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel14" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b16" onclick="toggleButton(this)">Gymnastics</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel15" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b17" onclick="toggleButton(this)">Gymnastics</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel16" value="" aria-label="...">
-                            </div>
-                        </td>
-                        <td style="background-color: #e6dbb9">
-                            <a class="bg-lightred calendar-button padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13 text-decoration-none" href="#" role="button" id="b18" onclick="toggleButton(this)">Gymnastics</a>
-                            <div class="check pt-1">
-                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel17" value="" aria-label="...">
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+    </th:block><th:block sec:authorize="isAuthenticated()">
+    <th:block th:if="${hasPlan}">
+        <div id="successMessage" th:if="${planSelected}" class="alert alert-success text-center m-2">
+            <p>Your plan has been successfully selected!</p>
         </div>
-        </th:block>
-        <th:block th:unless="${selectedP != null}">
-                <h1 class="h1 text-center" style="padding-top: 200px; padding-bottom: 200px;color: cadetblue;font-weight:bold">You currently do not have a plan selected.</h1>
-        </th:block>
+        <div class="container p-5">
+            <div class="row justify-content">
+                <div class="col-sm-6">
+                    <div class="card text-center">
+                        <div class="title rounded">
+                            <h2 class="p-2 rounded" style="background-color: #e6dbb9" pt-2>PROFILE</h2>
+                            <h5 class="profile p-3">Username: <span th:text="${#authentication.name}"></span></h5>
+                            <h5 class="profile p-3" th:if="${hasPlan}">
+                                Credits: <span th:text="${selectedP.initialCredits}"></span>
+<!--                                + '/' + ${selectedP.initialCredits}-->
+                            <h5 class="profile p-3">Plan: <span th:text="${selectedP.plan}"></span></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card text-center">
+                        <div class="title rounded">
+                            <h2 class="p-2 rounded" style="background-color: #e6dbb9" pt-2>WORK BOARD</h2>
+                            <h5 class="profile p-3" th:if="${hasPlan}">
+                                Remaining credits: <span th:text="${selectedP.credits}"></span>
+                            </h5>
+                            <div th:each="training : ${userTrainings}">
+                                <h5 class="profile p-3">
+                                    <span th:text="${training.day} + ': ' + ${training.trainingType}"></span>
+                                    <form th:action="@{/training/remove}" method="post" style="display: inline;">
+                                        <input type="hidden" name="trainingId" th:value="${training.id}"/>
+                                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                    </form>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div><div class="table-responsive" style="width: 50%; margin: 0 auto;">
+        <table class="table table-bordered text-center" style="font-size: 0.8rem;">
+            <thead>
+            <tr class="tr-days">
+                <th class="text-uppercase" style="background-color: cadetblue; color: #f7af1a">Day</th>
+                <th th:each="type : ${trainingTypes}"
+                    class="text-uppercase"
+                    style="background-color: cadetblue; color: #f7af1a"
+                    th:text="${type}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="day : ${days}">
+                <td style="background-color: #e6dbb9" th:text="${day}"></td>
+                <td th:each="type : ${trainingTypes}" style="background-color: #e6dbb9">
+                    <form th:action="@{/training/select}" method="post">
+                        <input type="hidden" name="day" th:value="${day}"/>
+                        <input type="hidden" name="trainingType" th:value="${type}"/>
+                        <button type="submit" class="btn btn-primary">Select</button>
+                    </form>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     </th:block>
+    <th:block th:unless="${hasPlan}">
+        <h1 class="h1 text-center" style="padding-top: 200px; padding-bottom: 200px;color: cadetblue;font-weight:bold">
+            You currently do not have a plan selected.
+        </h1>
+    </th:block>
+</th:block>
     <script>
         setTimeout(function () {
             const messageDiv = document.getElementById("successMessage");
             if (messageDiv) {
-                messageDiv.style.opacity = "0"; // fade-out
+                messageDiv.style.opacity = "0";
                 setTimeout(() => messageDiv.style.display = "none", 1000);
             }
         }, 3000);
+        function toggleButton(button) {
+            button.classList.toggle('active');
+        }
     </script>
+    <div th:if="${message != null}" class="alert alert-success" th:text="${message}"></div>
 </main>
 <div class="title-class rounded-5 mx-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
 <footer th:replace="~{fragments/footer}"></footer>

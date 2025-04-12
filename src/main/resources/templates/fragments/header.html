@@ -23,14 +23,14 @@
                            data-bs-toggle="dropdown" aria-expanded="false">
                             Menu
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item text-warning" href="/fitness">Fitness</a></li>
-                            <li><a class="dropdown-item text-warning" href="/tennis">Tennis</a></li>
-                            <li><a class="dropdown-item text-warning" href="/gymnastics">Gymnastics</a></li>
-                            <li><a class="dropdown-item text-warning" href="/swimming">Swimming</a></li>
-                            <li><a class="dropdown-item text-warning" href="/kids-zone">Kids Zone</a></li>
-                            <li><a class="dropdown-item text-warning" href="/healthy-food">Healthy food</a></li>
-                        </ul>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link active text-warning" href="/fitness">FITNESS</a></li>
+                                <li class="nav-item"><a class="nav-link active text-warning" href="/tennis">TENNIS</a></li>
+                                <li class="nav-item"><a class="nav-link active text-warning" href="/gymnastics">GYMNASTICS</a></li>
+                                <li class="nav-item"><a class="nav-link active text-warning" href="/swimming">SWIMMING</a></li>
+                                <li class="nav-item"><a class="nav-link active text-warning" href="/kids-zone">KIDS ZONE</a></li>
+                                <li class="nav-item"><a class="nav-link active text-warning" href="/healthy-food">HEALTHY FOOD</a></li>
+                            </ul>
                     </li>
 
                     <li class="nav-item">
@@ -52,16 +52,23 @@
                             </li>
                         </th:block>
 <!--                        <th:block th:if="${!userHasPlan}">-->
-                            <li class="nav-item">
-                                <a class="nav-link active text-warning" th:href="@{/users/plans}">Plans</a>
-                            </li>
+
+
 <!--                        </th:block>-->
 
-                        <li class="nav-item">
-                            <a class="nav-link text-warning" th:href="@{/users/profile}">Profile</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-warning" href="#" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Profile
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link active text-warning" th:href="@{/users/profile}">MY PROFILE</a></li>
+                                <li class="nav-item"><a class="nav-link active text-warning" th:href="@{/users/plans}">PLANS</a></li>
+                                <li class="nav-item"><a class="nav-link active text-warning" th:href="@{/users/edit-profile}">EDIT PROFILE</a></li>
+                                <li class="nav-item"><a class="nav-link active text-warning" th:href="@{/}">FIT CHAT</a></li>
+                                <li class="nav-item"><a class="nav-link active text-warning" th:href="@{/}">SUPPORT</a></li>
+                            </ul>
                         </li>
-
-
                         <li class="nav-item">
                             <a class="nav-link text-warning" th:href="@{/users/logout}">Logout</a>
                         </li>
