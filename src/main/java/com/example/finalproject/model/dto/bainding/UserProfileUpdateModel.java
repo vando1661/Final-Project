@@ -12,6 +12,7 @@ public class UserProfileUpdateModel {
     private String name;
     private String surname;
     private String email;
-    private String password;
+    private String oldPassword;
+    private String newPassword;
     private String confirmPassword;
 }

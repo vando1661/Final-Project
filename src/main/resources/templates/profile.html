@@ -21,17 +21,22 @@
         </div>
         </div>
     </th:block><th:block sec:authorize="isAuthenticated()">
+    <div id="message" th:if="${message}" class="alert alert-success text-center m-2" th:text="${message}"> Create new scratch file from selection</div>
     <th:block th:if="${hasPlan}">
         <div id="successMessage" th:if="${planSelected}" class="alert alert-success text-center m-2">
             <p>Your plan has been successfully selected!</p>
         </div>
+
         <div class="container p-5">
             <div class="row justify-content">
                 <div class="col-sm-6">
                     <div class="card text-center">
                         <div class="title rounded">
                             <h2 class="p-2 rounded" style="background-color: #e6dbb9" pt-2>PROFILE</h2>
-                            <h5 class="profile p-3">Username: <span th:text="${#authentication.name}"></span></h5>
+                            <h5 class="profile p-3">Username: <span th:text="${user.username}"></span></h5>
+                            <h5 class="profile p-3">Email: <span th:text="${user.email}"></span></h5>
+                            <h5 class="profile p-3">Name: <span th:text="${user.name}"></span></h5>
+                            <h5 class="profile p-3">Surname: <span th:text="${user.surname}"></span></h5>
                             <h5 class="profile p-3" th:if="${hasPlan}">
                                 Credits: <span th:text="${selectedP.initialCredits}"></span>
 <!--                                + '/' + ${selectedP.initialCredits}-->
@@ -44,7 +49,7 @@
                         <div class="title rounded">
                             <h2 class="p-2 rounded" style="background-color: #e6dbb9" pt-2>WORK BOARD</h2>
                             <h5 class="profile p-3" th:if="${hasPlan}">
-                                Remaining credits: <span th:text="${selectedP.credits}"></span>
+                                Remaining credits: <span th:text="${user.currentCredits}"></span>
                             </h5>
                             <div th:each="training : ${userTrainings}">
                                 <h5 class="profile p-3">
@@ -59,7 +64,8 @@
                     </div>
                 </div>
             </div>
-    </div><div class="table-responsive" style="width: 50%; margin: 0 auto;">
+        </div>
+        <div class="table-responsive" style="width: 50%; margin: 0 auto;">
         <table class="table table-bordered text-center" style="font-size: 0.8rem;">
             <thead>
             <tr class="tr-days">
@@ -87,24 +93,58 @@
     </div>
     </th:block>
     <th:block th:unless="${hasPlan}">
-        <h1 class="h1 text-center" style="padding-top: 200px; padding-bottom: 200px;color: cadetblue;font-weight:bold">
-            You currently do not have a plan selected.
-        </h1>
+        <div class="container p-5">
+            <div class="row justify-content">
+                <div class="col-sm-6">
+                    <div class="card text-center">
+                        <div class="title rounded">
+                            <h2 class="p-2 rounded" style="background-color: #e6dbb9" pt-2>PROFILE</h2>
+                            <h5 class="profile p-3">Username: <span th:text="${user.username}"></span></h5>
+                            <h5 class="profile p-3">Email: <span th:text="${user.email}"></span></h5>
+                            <h5 class="profile p-3">Name: <span th:text="${user.name}"></span></h5>
+                            <h5 class="profile p-3">Surname: <span th:text="${user.surname}"></span></h5>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col-sm-6">
+                        <div class="card text-center">
+                            <div class="title rounded" style="background-color: #c7c5bc">
+                                <h1 class="h1 text-center" style="padding-top: 20px; padding-bottom: 20px;color: cadetblue;font-weight:bold;" >
+                                    <div>You do not have a plan.</div></h1>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
     </th:block>
 </th:block>
+<!--    <script>-->
+<!--        setTimeout(function () {-->
+<!--            const messageDiv = document.getElementById("successMessage");-->
+<!--            if (messageDiv) {-->
+<!--                messageDiv.style.opacity = "0";-->
+<!--                setTimeout(() => messageDiv.style.display = "none", 1000);-->
+<!--            }-->
+<!--        }, 3000);-->
+<!--        function toggleButton(button) {-->
+<!--            button.classList.toggle('active');-->
+<!--        }-->
+<!--    </script>-->
     <script>
         setTimeout(function () {
-            const messageDiv = document.getElementById("successMessage");
-            if (messageDiv) {
-                messageDiv.style.opacity = "0";
-                setTimeout(() => messageDiv.style.display = "none", 1000);
-            }
+            const messages = ["successMessage", "message"];
+
+            messages.forEach(function (id) {
+                const messageDiv = document.getElementById(id);
+                if (messageDiv) {
+                    messageDiv.style.opacity = "0";
+                    setTimeout(() => {
+                        messageDiv.style.display = "none";
+                    }, 1000);
+                }
+            });
         }, 3000);
-        function toggleButton(button) {
-            button.classList.toggle('active');
-        }
     </script>
-    <div th:if="${message != null}" class="alert alert-success" th:text="${message}"></div>
 </main>
 <div class="title-class rounded-5 mx-2" style="background-image: url('/pic/Interval Training Workouts.jpg')"><div><h3 class="h1-title">Mens sana in corpore sano.</h3></div></div>
 <footer th:replace="~{fragments/footer}"></footer>

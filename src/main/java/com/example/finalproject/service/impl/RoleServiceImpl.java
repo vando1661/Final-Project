@@ -32,12 +32,12 @@ public class RoleServiceImpl implements RoleService {
                 });
     }
 
-    @Override
-    public RoleEntity findByRoleUserEnum(RoleUserEnum roleUserEnum) {
-        return roleRepository
-                .findByRole(roleUserEnum)
-                .orElse(null);
-    }
+//    @Override
+//    public RoleEntity findByRoleUserEnum(RoleUserEnum roleUserEnum) {
+//        return roleRepository
+//                .findByRole(roleUserEnum)
+//                .orElse(null);
+//    }
 
     @Override
     public RoleEntity findByRole(RoleUserEnum roleUserEnum) {

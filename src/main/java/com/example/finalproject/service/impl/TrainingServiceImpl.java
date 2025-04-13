@@ -30,7 +30,7 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Override
     public void assignTrainingToUser(DayOfWeek day, TypesOfSessions type, UserEntity user) {
-        if (user.getPlan() == null || user.getPlan().getCredits() <= 0) {
+        if (user.getPlan() == null || user.getPlan().getCredits()<= 0) {
             throw new IllegalStateException("Not enough credits or no active plan");
         }
 
@@ -51,7 +51,7 @@ public class TrainingServiceImpl implements TrainingService {
         trainingRepository.save(training);
 
 
-        user.getPlan().setCredits(user.getPlan().getCredits() - 1);
+        user.setCurrentCredits(user.getCurrentCredits() - 1);
         userRepository.save(user);
     }
 
@@ -86,7 +86,7 @@ public class TrainingServiceImpl implements TrainingService {
             throw new RuntimeException("You can only remove your own trainings");
         }
         if (!training.isStatus() && user.getPlan() != null) {
-            user.getPlan().setCredits(user.getPlan().getCredits() + 1);
+            user.setCurrentCredits(user.getCurrentCredits() + 1);
             userRepository.save(user);
         }
 

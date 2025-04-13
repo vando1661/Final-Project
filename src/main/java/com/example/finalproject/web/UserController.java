@@ -5,6 +5,7 @@ import com.example.finalproject.model.dto.bainding.UserProfileUpdateModel;
 import com.example.finalproject.model.dto.bainding.UserRegisterBindingModel;
 import com.example.finalproject.model.entity.UserEntity;
 import com.example.finalproject.model.serviceModel.UserServiceModel;
+import com.example.finalproject.repository.UserRepository;
 import com.example.finalproject.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,56 +26,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
     private final ModelMapper modelMapper;
+    private final UserRepository userRepository;
 
-    public UserController(UserService userService, ModelMapper modelMapper) {
+    public UserController(UserService userService, ModelMapper modelMapper, UserRepository userRepository) {
         this.userService = userService;
         this.modelMapper = modelMapper;
-
+        this.userRepository = userRepository;
     }
 
-    @GetMapping("/edit-profile")
-    public String editProfile(Model model) {
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        UserEntity user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute("user") UserEntity user, Principal principal,
+                             RedirectAttributes redirectAttributes) {
+        String username = principal.getName();
 
-        model.addAttribute("user", user);
-        model.addAttribute("userProfileUpdateModel", new UserProfileUpdateModel());
-        return "edit-profile";
-    }
-
-    @PostMapping("/edit-profile")
-    public String updateProfile(@Valid @ModelAttribute("userProfileUpdateModel") UserProfileUpdateModel userProfileUpdateModel, Model model) {
-
-
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        UserEntity user = userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-
-        user.setName(userProfileUpdateModel.getName());
-        user.setSurname(userProfileUpdateModel.getSurname());
-        user.setEmail(userProfileUpdateModel.getEmail());
-
-        if (userProfileUpdateModel.getPassword() != null && !userProfileUpdateModel.getPassword().isEmpty()) {
-            if (!userProfileUpdateModel.getPassword().equals(userProfileUpdateModel.getConfirmPassword())) {
-                model.addAttribute("errorMessage", "Passwords do not match.");
-                model.addAttribute("userProfileUpdateModel", userProfileUpdateModel);
-                return "edit-profile";
-            }
-            user.setPassword(userProfileUpdateModel.getPassword());
+        Optional<UserEntity> usernameOp = userRepository.findByUsername(username);
+        if (usernameOp.isPresent()) {
+            UserEntity userEntity = usernameOp.get();
+            userEntity.setName(user.getName());
+            userEntity.setSurname(user.getSurname());
+            userEntity.setEmail(user.getEmail());
+            userRepository.save(userEntity);
         }
 
-        userService.saveUser(user);
-
-        model.addAttribute("message", "Profile updated successfully!");
-        return "profile";
+        redirectAttributes.addFlashAttribute("message", "User updated successfully!");
+        return "redirect:/users/profile";
     }
 
     @GetMapping("/register")

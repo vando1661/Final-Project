@@ -70,6 +70,7 @@ public class PlanController {
         }
 
         user.setPlan(selectedPlan);
+        user.setCurrentCredits(selectedPlan.getInitialCredits());
         userService.saveUser(user);
         redirectAttributes.addFlashAttribute("planSelected", true);
 

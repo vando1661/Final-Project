@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head}"></head>
 <body>
 <header th:replace="~{fragments/header}"></header>
@@ -7,107 +7,75 @@
     <div class="h1-form">
         <h1>Edit Profile</h1>
     </div>
-    <form th:action="@{/users/updateProfile}" th:method="POST" th:object="${userProfileUpdateModel}"
-          class="mx-auto w-25 bg-blur rounded-3 p-3 m-5" style="background-color:cadetblue">
+    <div class="container p-5 w-25">
+        <div class="card text-center">
+            <div class="title rounded">
+                <h2 class="p-2 rounded" style="background-color: #e6dbb9">PROFILE</h2>
+                <form th:action="@{/users/update}" th:object="${user}" method="post">
+                    <div class="form-group p-2">
+                        <label>Name:</label>
+                        <input type="text" class="form-control text-center" th:field="*{name}" readonly/>
+                        <button type="button" class="btn btn-sm btn-warning mt-2" onclick="enableEdit(this)">
+                            Edit
+                        </button>
+                    </div>
+                    <div class="form-group p-2">
+                        <label>Surname:</label>
+                        <input type="text" class="form-control text-center" th:field="*{surname}" readonly/>
+                        <button type="button" class="btn btn-sm btn-warning mt-2" onclick="enableEdit(this)">
+                            Edit
+                        </button>
+                    </div>
+                    <div class="form-group p-2">
+                        <label>Email:</label>
+                        <input type="email" class="form-control text-center" th:field="*{email}" readonly/>
+                        <button type="button" class="btn btn-sm btn-warning mt-2" onclick="enableEdit(this)">
+                            Edit
+                        </button>
+                    </div>
+<!--                    <div class="form-group p-2">-->
+<!--                        <label>Old Password:</label>-->
+<!--                        <input type="password" class="form-control text-center" th:field="*{password}" />-->
+<!--                        <button type="button" class="btn btn-sm btn-warning mt-2" onclick="enableEdit(this)">-->
+<!--                            Edit-->
+<!--                        </button>-->
+<!--                    </div>-->
 
-        <div class="form-group col-md-12">
-            <label for="inputName4">Name</label>
-            <input th:field="*{name}" th:errorclass="is-invalid" type="text" class="form-control" id="inputName4" aria-describedby="nameHelpInline"
-                   placeholder="Name" value="${user.name}">
-            <small id="nameHelpInline" class=" invalid-feedback text-light rounded fs-6 py-1" style="background-color: cadetblue">
-                Name length must be between 2 and 20 characters.
-            </small>
-        </div>
 
-        <div class="form-group col-md-12">
-            <label for="inputSurname4">Surname</label>
-            <input th:field="*{surname}" th:errorclass="is-invalid" type="text" class="form-control" id="inputSurname4"
-                   aria-describedby="surnameHelpInline" placeholder="Surname" value="${user.surname}">
-            <small id="surnameHelpInline" class="invalid-feedback text-light rounded fs-6 py-1" style="background-color: cadetblue">
-                Surname length must be between 3 and 20 characters.
-            </small>
-        </div>
+<!--                    <div class="form-group p-2">-->
+<!--                        <label>New Password:</label>-->
+<!--                        <input type="password" class="form-control text-center" th:field="*{newPassword}" />-->
+<!--                        <button type="button" class="btn btn-sm btn-warning mt-2" onclick="enableEdit(this)">-->
+<!--                            Edit-->
+<!--                        </button>-->
+<!--                    </div>-->
 
-        <div class="form-group col-md-12">
-            <label for="inputEmail4">Email</label>
-            <input th:field="*{email}"  th:errorclass="is-invalid" type="text" class="form-control" id="inputEmail4"
-                   placeholder="Email" aria-describedby="emailHelpInline"  value="${user.email}">
-            <small id="emailHelpInline" class="invalid-feedback text-light rounded fs-6 py-1" style="background-color: cadetblue">
-                Enter valid email address.
-            </small>
+
+<!--                    <div class="form-group p-2">-->
+<!--                        <label>Confirm New Password:</label>-->
+<!--                        <input type="password" class="form-control text-center" th:field="*{confirmPassword}" />-->
+<!--                        <button type="button" class="btn btn-sm btn-warning mt-2" onclick="enableEdit(this)">-->
+<!--                            Edit-->
+<!--                        </button>-->
+<!--                    </div>-->
+                    <button type="submit" class="btn btn-success mt-4 m-3">Update</button>
+                </form>
+            </div>
         </div>
-        <div class="form-group col-md-12">
-            <label for="inputPassword4">New Password</label>
-            <input th:field="*{password}" th:errorclass="is-invalid" type="password" class="form-control" id="inputPassword4"
-                   aria-describedby="passwordHelpInline" placeholder="New Password">
-            <small id="passwordHelpInline" class="invalid-feedback text-light rounded fs-6 py-1" style="background-color: cadetblue">
-                Password length must be more than 3 characters long.
-            </small>
-        </div>
-        <div class="form-group col-md-12">
-            <label for="confirmPassword4">Confirm Password</label>
-            <input th:field="*{confirmPassword}" th:errorclass="is-invalid" type="password" class="form-control" id="confirmPassword4"
-                   aria-describedby="confirmPasswordHelpInline" placeholder="Confirm Password">
-            <small id="confirmPasswordHelpInline" class="invalid-feedback text-light rounded fs-6 py-1" style="background-color: cadetblue">
-                Password length must be more than 3 characters long.
-            </small>
-            <small id="passwordMismatchHelpInline" class="invalid-feedback text-light rounded fs-6 py-1" style=" display:none;">
-                Passwords do not match.
-            </small>
     </div>
-
-        <div class="text-center p-3">
-            <button type="submit" class="btn btn-outline-warning mb-3 m-3">UPDATE</button>
+    <div class="title-class rounded-5 mx-2" style="background-image: url('/pic/Interval Training Workouts.jpg')">
+        <div>
+            <h3 class="h1-title">Mens sana in corpore sano.</h3>
         </div>
-    </form>
-</main>
-
-<div class="title-class rounded-5 mx-2" style="background-image: url('/pic/Interval Training Workouts.jpg')">
-    <div>
-        <h3 class="h1-title">Mens sana in corpore sano.</h3>
     </div>
-</div>
-
-<footer th:replace="~{fragments/footer}"></footer>
-
-<script>
-    function validatePassword() {
-        let password = document.getElementById('inputPassword4').value;
-        let confirmPassword = document.getElementById('inputConfirmPassword4').value;
-        let isValid = true;
-
-        if (password.length <= 3) {
-            document.getElementById('passwordHelpInline').style.display = 'block';
-            document.getElementById('inputPassword4').classList.add('is-invalid');
-            isValid = false;
-        } else {
-            document.getElementById('passwordHelpInline').style.display = 'none';
-            document.getElementById('inputPassword4').classList.remove('is-invalid');
+    <script>
+        function enableEdit(button) {
+            const input = button.previousElementSibling;
+            input.removeAttribute("readonly");
+            input.focus();
         }
-
-        if (confirmPassword.length <= 3) {
-            document.getElementById('confirmPasswordHelpInline').style.display = 'block';
-            document.getElementById('inputConfirmPassword4').classList.add('is-invalid');
-            isValid = false;
-        } else {
-            document.getElementById('confirmPasswordHelpInline').style.display = 'none';
-            document.getElementById('inputConfirmPassword4').classList.remove('is-invalid');
-        }
-
-        if (password !== confirmPassword) {
-            document.getElementById('passwordMismatchHelpInline').style.display = 'block';
-            document.getElementById('inputPassword4').classList.add('is-invalid');
-            document.getElementById('inputConfirmPassword4').classList.add('is-invalid');
-            isValid = false;
-        } else {
-            document.getElementById('passwordMismatchHelpInline').style.display = 'none';
-            document.getElementById('inputPassword4').classList.remove('is-invalid');
-            document.getElementById('inputConfirmPassword4').classList.remove('is-invalid');
-        }
-
-        return isValid;
-    }
-</script>
+    </script>
+    <footer th:replace="~{fragments/footer}"></footer>
 
 </body>
 </html>

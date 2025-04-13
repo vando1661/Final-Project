@@ -7,6 +7,7 @@ public interface RoleService {
 
     void initRoles();
 
-    RoleEntity findByRoleUserEnum(RoleUserEnum roleUserEnum);
+//    RoleEntity findByRoleUserEnum(RoleUserEnum roleUserEnum);
+
     RoleEntity findByRole(RoleUserEnum roleUserEnum);
 }
